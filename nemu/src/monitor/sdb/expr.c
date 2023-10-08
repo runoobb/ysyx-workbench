@@ -20,8 +20,9 @@
  */
 #include <regex.h>
 
+
 enum {
-  TK_NOTYPE = 256, TK_EQ,
+  TK_NOTYPE = 256, TK_EQ, TK_PLUS, TK_MIN, TK_MUL, TK_NUM, TK_LPA, TK_RPA,
 
   /* TODO: Add more token types */
 
@@ -37,8 +38,14 @@ static struct rule {
    */
 
   {" +", TK_NOTYPE},    // spaces
-  {"\\+", '+'},         // plus
+  {"\\+", TK_PLUS},         // plus
   {"==", TK_EQ},        // equal
+  {"\\-", TK_MIN},
+  {"\\*", TK_MUL},
+  {"[0-9]+", TK_NUM},
+  {"\\(", TK_LPA},
+  {"\\)", TK_RPA},
+
 };
 
 #define NR_REGEX ARRLEN(rules)
@@ -95,9 +102,17 @@ static bool make_token(char *e) {
          */
 
         switch (rules[i].token_type) {
-          default: TODO();
+          case TK_NUM: 
+            tokens[nr_token].type = rules[i].token_type;
+            assert(substr_len < 32);
+            for(int j = 0; j < substr_len; j++)
+              tokens[nr_token].str[j] = e[position - substr_len + j];
+            break;
+          default: tokens[nr_token].type = rules[i].token_type;
         }
-
+        
+        nr_token += 1;
+        assert(nr_token < 32);
         break;
       }
     }
@@ -111,15 +126,114 @@ static bool make_token(char *e) {
   return true;
 }
 
+bool check_parentheses() { 
+  int top_p = 0;
+  for(int i = 0; i < nr_token; i++){
+    if(top_p < 0)
+      return false;
+    if(tokens[i].type == TK_LPA)
+      top_p += 1; 
+    else
+      if(tokens[i].type == TK_RPA)
+        top_p -= 1;
+      else
+        continue;
+  }
+  Log("top_p at %d", top_p);
+  if(!top_p) return true;
+  else return false;
+}
+
+static int* opt_stack; 
+static int* opr_stack; 
+static int top_t; 
+static int top_r;
+
+void eval_once(){
+  switch(opt_stack[top_t--]){
+    case TK_PLUS:
+      opr_stack[top_r - 1] = opr_stack[top_r] + opr_stack[top_r - 1];
+      top_r -= 1;
+      break;
+    case TK_MIN:
+      opr_stack[top_r - 1] = opr_stack[top_r] - opr_stack[top_r - 1];
+      top_r -= 1;
+      break;
+    case TK_MUL:
+      opr_stack[top_r - 1] = opr_stack[top_r] * opr_stack[top_r - 1];
+      top_r -= 1;
+      break;
+  }
+  
+}
 
 word_t expr(char *e, bool *success) {
   if (!make_token(e)) {
     *success = false;
     return 0;
   }
-
   /* TODO: Insert codes to evaluate the expression. */
-  TODO();
-
+  assert(check_parentheses());   
+  opt_stack = (int*) calloc(32, sizeof(int));
+  opr_stack = (int*) calloc(32, sizeof(int));
+  top_r = 0;
+  top_t = 0;
+  for(int i = 0; i < nr_token; i++)
+  {
+    assert(top_t >= 0);
+    switch(tokens[i].type){
+      case TK_NUM:
+        top_r += 1;
+        opr_stack[top_r] = atoi(tokens[i].str);
+        
+        break;
+      case TK_LPA:
+        top_t += 1;
+        opt_stack[top_t] = TK_LPA;
+        
+        break;
+      case TK_RPA:
+        while(opt_stack[top_t] != TK_LPA){
+          eval_once();
+          assert(top_t >=0 && top_r >= 0);
+        }
+        top_t -= 1;
+        break;
+      case TK_MUL:
+        if(tokens[i+1].type == TK_LPA){
+          top_t += 1;
+          opt_stack[top_t] = TK_MUL;
+        }
+        else{
+          opr_stack[top_r] = opr_stack[top_r] * atoi(tokens[++i].str);
+        }
+        
+        break;
+      case TK_PLUS:
+        while(opt_stack[top_t] == TK_MUL){
+          eval_once();
+          assert(top_t >= 0 && top_r >= 0);
+        }
+        top_t += 1;
+        opt_stack[top_t] = TK_PLUS;
+        break;
+      case TK_MIN:
+        while(opt_stack[top_t] == TK_MUL)
+          eval_once();
+        top_t += 1;
+        opt_stack[top_t] = TK_MIN;
+        break;
+    }
+  
+ 
+  }
+  while(top_t != 0){
+    eval_once();
+    assert(top_t >= 0 && top_r >= 0);
+  }
+  printf("val = %d\n", opr_stack[1]);
+  free(opt_stack);
+  free(opr_stack);
   return 0;
 }
+

@@ -18,7 +18,8 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include "sdb.h"
-
+#include <memory/paddr.h>
+#include <ctype.h>
 static int is_batch_mode = false;
 
 void init_regex();
@@ -49,10 +50,19 @@ static int cmd_c(char *args) {
 
 
 static int cmd_q(char *args) {
+  nemu_state.state = NEMU_QUIT;
   return -1;
 }
 
 static int cmd_help(char *args);
+
+static int cmd_si(char *args);
+
+static int cmd_info(char *args);
+
+static int cmd_x(char *args);
+
+static int cmd_p(char *args);
 
 static struct {
   const char *name;
@@ -62,7 +72,10 @@ static struct {
   { "help", "Display information about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
-
+  { "si", "'Call: si N' Execute N instuctions and then halt", cmd_si},
+  { "info", "'Call info arg' Print the info of regs or watchpoints, arg r for regs, arg w for watchpoints", cmd_info},
+  { "x", "'Call: x N EXPR' Evaluate EXPR as the base address and print the contiguous N 4 bytes memory", cmd_x},
+  { "p", "'Call: p REGEX' Evaluate the value of Regex Expression", cmd_p},
   /* TODO: Add more commands */
 
 };
@@ -92,6 +105,69 @@ static int cmd_help(char *args) {
   return 0;
 }
 
+static int cmd_si(char *args){
+  char *arg = strtok(NULL, " ");
+  if(arg == NULL){
+    cpu_exec(1);
+    return 0;
+  }
+  int step = atoi(arg);
+  if(!step)
+    printf("no instruction is executed\n");
+  else
+    cpu_exec(step);
+  return 0;
+}
+ 
+static int cmd_info(char *args){
+  char *arg = strtok(NULL, " ");
+
+  if(arg == NULL){
+    printf("another arg required\n");
+  }
+
+  else{
+    switch(arg[0]){
+      case 'r':
+        isa_reg_display();
+      case 'b':
+    }
+  }
+  return 0;
+}
+
+static int cmd_x(char *args){
+  char *arg = strtok(NULL, " ");
+  int byte_num = atoi(arg);
+  char *addr = strtok(NULL, " ");
+  paddr_t addr_val;
+  sscanf(addr, "%x", &addr_val); 
+  word_t temp;
+  for(int i = 0; i < byte_num; i++)
+  {
+    temp = paddr_read(addr_val + 4*i, 4);
+    printf("%x\n", temp);
+    printf("test_start*******\n");
+    for(int j = 0; j < 4; j++)
+    {
+      temp = paddr_read(addr_val + 4*i + j, 1);
+      printf("%x ", temp);
+    }
+    printf("\n");
+    printf("test_end*******\n");
+  }
+  return 0;
+}
+
+static int cmd_p(char *args)
+{
+  bool trace_flag = true;
+  expr(args, &trace_flag);
+  if(!trace_flag)
+    printf("Parse Failed\n");
+  return 0;
+}
+    
 void sdb_set_batch_mode() {
   is_batch_mode = true;
 }
