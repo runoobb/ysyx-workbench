@@ -14,7 +14,7 @@
 ***************************************************************************************/
 
 #include <isa.h>
-
+#include <memory/paddr.h>
 /* We use the POSIX regex functions to process regular expressions.
  * Type 'man regex' for more information about POSIX regex functions.
  */
@@ -22,7 +22,7 @@
 
 
 enum {
-  TK_NOTYPE = 256, TK_EQ, TK_PLUS, TK_MIN, TK_MUL, TK_NUM, TK_LPA, TK_RPA,
+  TK_NOTYPE = 256, TK_EQ, TK_PLUS, TK_MIN, TK_MUL, TK_NUM, TK_HNUM,  TK_LPA, TK_RPA, TK_REG,
 
   /* TODO: Add more token types */
 
@@ -42,9 +42,11 @@ static struct rule {
   {"==", TK_EQ},        // equal
   {"\\-", TK_MIN},
   {"\\*", TK_MUL},
-  {"[0-9]+", TK_NUM},
+  {"[0][x][0-9a-fA-F]+", TK_HNUM},
+  {"[1-9][0-9]*", TK_NUM},
   {"\\(", TK_LPA},
   {"\\)", TK_RPA},
+  {"\\$", TK_REG},
 
 };
 
@@ -107,6 +109,14 @@ static bool make_token(char *e) {
             assert(substr_len < 32);
             for(int j = 0; j < substr_len; j++)
               tokens[nr_token].str[j] = e[position - substr_len + j];
+            tokens[nr_token].str[substr_len] = '\0';
+            break;
+          case TK_HNUM:
+            tokens[nr_token].type = rules[i].token_type;
+            assert(substr_len < 32);
+            for(int j = 0; j < substr_len; j++)
+              tokens[nr_token].str[j] = e[position - substr_len + j];
+            tokens[nr_token].str[substr_len] = '\0';
             break;
           default: tokens[nr_token].type = rules[i].token_type;
         }
@@ -145,7 +155,7 @@ bool check_parentheses() {
 }
 
 static int* opt_stack; 
-static int* opr_stack; 
+static word_t* opr_stack; 
 static int top_t; 
 static int top_r;
 
@@ -173,9 +183,9 @@ word_t expr(char *e, bool *success) {
     return 0;
   }
   /* TODO: Insert codes to evaluate the expression. */
-  assert(check_parentheses());   
+  assert(check_parentheses());
   opt_stack = (int*) calloc(32, sizeof(int));
-  opr_stack = (int*) calloc(32, sizeof(int));
+  opr_stack = (word_t*) calloc(32, sizeof(word_t));
   top_r = 0;
   top_t = 0;
   for(int i = 0; i < nr_token; i++)
@@ -205,7 +215,13 @@ word_t expr(char *e, bool *success) {
           opt_stack[top_t] = TK_MUL;
         }
         else{
-          opr_stack[top_r] = opr_stack[top_r] * atoi(tokens[++i].str);
+          if(tokens[i+1].type == TK_NUM)
+            opr_stack[top_r] = opr_stack[top_r] * atoi(tokens[++i].str);
+          else{
+            paddr_t addr_val;
+            sscanf(tokens[++i].str, "%x", &addr_val);
+            opr_stack[++top_r] = paddr_read(addr_val, 1);
+          }
         }
         
         break;
@@ -231,9 +247,10 @@ word_t expr(char *e, bool *success) {
     eval_once();
     assert(top_t >= 0 && top_r >= 0);
   }
-  printf("val = %d\n", opr_stack[1]);
+  printf("val = %d(to be del)\n", opr_stack[1]);
+  word_t val = opr_stack[1];
   free(opt_stack);
   free(opr_stack);
-  return 0;
+  return val;
 }
 

@@ -20,6 +20,8 @@
 #include "sdb.h"
 #include <memory/paddr.h>
 #include <ctype.h>
+#include <watchpoint.h>
+
 static int is_batch_mode = false;
 
 void init_regex();
@@ -64,6 +66,10 @@ static int cmd_x(char *args);
 
 static int cmd_p(char *args);
 
+static int cmd_w(char *args);
+
+static int cmd_d(char *args);
+
 static struct {
   const char *name;
   const char *description;
@@ -76,6 +82,8 @@ static struct {
   { "info", "'Call info arg' Print the info of regs or watchpoints, arg r for regs, arg w for watchpoints", cmd_info},
   { "x", "'Call: x N EXPR' Evaluate EXPR as the base address and print the contiguous N 4 bytes memory", cmd_x},
   { "p", "'Call: p REGEX' Evaluate the value of Regex Expression", cmd_p},
+  { "w", "'Call: w EXPR' Stop program when the value of EXPR is changed", cmd_w},
+  { "d", "'Call: d WP_NUM' Del Number WP_NUM watchpoint", cmd_d},
   /* TODO: Add more commands */
 
 };
@@ -141,7 +149,7 @@ static int cmd_x(char *args){
   int byte_num = atoi(arg);
   char *addr = strtok(NULL, " ");
   paddr_t addr_val;
-  sscanf(addr, "%x", &addr_val); 
+  sscanf(addr, "%x", &addr_val);
   word_t temp;
   for(int i = 0; i < byte_num; i++)
   {
@@ -162,10 +170,30 @@ static int cmd_x(char *args){
 static int cmd_p(char *args)
 {
   bool trace_flag = true;
-  expr(args, &trace_flag);
+  word_t result = expr(args, &trace_flag);
   if(!trace_flag)
     printf("Parse Failed\n");
+  else
+    printf("eval to %d(decimal)\n", result);
+
   return 0;
+}
+
+
+static int cmd_w(char *args)
+{
+  WP* tmp = new_wp(args);
+  if(tmp == NULL){
+    printf("Set up failed\n");
+  }
+  else
+    printf("Watchpoint %d set up.   %s\n", tmp->NO, tmp->expr);
+  return 0; 
+}
+
+static int cmd_d(char *args)
+{
+  return 0;  
 }
     
 void sdb_set_batch_mode() {
