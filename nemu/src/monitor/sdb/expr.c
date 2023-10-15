@@ -46,7 +46,7 @@ static struct rule {
   {"[1-9][0-9]*", TK_NUM},
   {"\\(", TK_LPA},
   {"\\)", TK_RPA},
-  {"\\$", TK_REG},
+  {"[$][0-9$rsgta][0-9ap][01]*", TK_REG},
 
 };
 
@@ -118,6 +118,13 @@ static bool make_token(char *e) {
               tokens[nr_token].str[j] = e[position - substr_len + j];
             tokens[nr_token].str[substr_len] = '\0';
             break;
+          case TK_REG:
+            tokens[nr_token].type = rules[i].token_type;
+            assert(substr_len < 32);
+            for(int j = 1; j < substr_len; j++)
+              tokens[nr_token].str[j-1] = e[position - substr_len + j];
+            tokens[nr_token].str[substr_len] = '\0';
+            break;
           default: tokens[nr_token].type = rules[i].token_type;
         }
         
@@ -149,7 +156,6 @@ bool check_parentheses() {
       else
         continue;
   }
-  Log("top_p at %d", top_p);
   if(!top_p) return true;
   else return false;
 }
@@ -173,6 +179,16 @@ void eval_once(){
       opr_stack[top_r - 1] = opr_stack[top_r] * opr_stack[top_r - 1];
       top_r -= 1;
       break;
+    case TK_EQ:
+      if(opr_stack[top_r - 1] == opr_stack[top_r])
+      {
+        opr_stack[top_r - 1] = 1;
+        top_r -= 1;
+      }
+      else{
+        opr_stack[top_r - 1] = 0;
+        top_r -= 1;
+      }
   }
   
 }
@@ -190,6 +206,8 @@ word_t expr(char *e, bool *success) {
   top_t = 0;
   for(int i = 0; i < nr_token; i++)
   {
+    bool trace_flag = true;
+    word_t regval = 0;
     assert(top_t >= 0);
     switch(tokens[i].type){
       case TK_NUM:
@@ -222,8 +240,7 @@ word_t expr(char *e, bool *success) {
             sscanf(tokens[++i].str, "%x", &addr_val);
             opr_stack[++top_r] = paddr_read(addr_val, 1);
           }
-        }
-        
+        } 
         break;
       case TK_PLUS:
         while(opt_stack[top_t] == TK_MUL){
@@ -239,6 +256,19 @@ word_t expr(char *e, bool *success) {
         top_t += 1;
         opt_stack[top_t] = TK_MIN;
         break;
+      case TK_REG:
+        regval = isa_reg_str2val(tokens[i].str, &trace_flag); 
+        if(!trace_flag){
+          Log("No reg %s\n", tokens[i].str);
+          return 0;
+        }
+        else
+          opr_stack[++top_r] = regval;
+        break;
+      case TK_EQ:
+        top_t += 1;
+        opt_stack[top_t] = TK_MIN;
+        break;
     }
   
  
@@ -247,7 +277,6 @@ word_t expr(char *e, bool *success) {
     eval_once();
     assert(top_t >= 0 && top_r >= 0);
   }
-  printf("val = %d(to be del)\n", opr_stack[1]);
   word_t val = opr_stack[1];
   free(opt_stack);
   free(opr_stack);

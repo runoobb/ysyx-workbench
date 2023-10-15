@@ -27,6 +27,14 @@ static int is_batch_mode = false;
 void init_regex();
 void init_wp_pool();
 
+#ifndef CONFIG_WATCHPOINT
+static void fail_msg()
+{
+  Log("Watchpoint disabled.\n");
+  return;
+}
+#endif
+
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 static char* rl_gets() {
   static char *line_read = NULL;
@@ -82,8 +90,8 @@ static struct {
   { "info", "'Call info arg' Print the info of regs or watchpoints, arg r for regs, arg w for watchpoints", cmd_info},
   { "x", "'Call: x N EXPR' Evaluate EXPR as the base address and print the contiguous N 4 bytes memory", cmd_x},
   { "p", "'Call: p REGEX' Evaluate the value of Regex Expression", cmd_p},
-  { "w", "'Call: w EXPR' Stop program when the value of EXPR is changed", cmd_w},
-  { "d", "'Call: d WP_NUM' Del Number WP_NUM watchpoint", cmd_d},
+  { "w", "'Call: w EXPR' Stop program when the value of EXPR is changed (Config in the menuconfig before use)", cmd_w},
+  { "d", "'Call: d WP_NUM' Del Number WP_NUM watchpoint (Sync with w)", cmd_d},
   /* TODO: Add more commands */
 
 };
@@ -138,7 +146,8 @@ static int cmd_info(char *args){
     switch(arg[0]){
       case 'r':
         isa_reg_display();
-      case 'b':
+      case 'w':
+        wp_display();
     }
   }
   return 0;
@@ -182,17 +191,15 @@ static int cmd_p(char *args)
 
 static int cmd_w(char *args)
 {
-  WP* tmp = new_wp(args);
-  if(tmp == NULL){
-    printf("Set up failed\n");
-  }
-  else
-    printf("Watchpoint %d set up.   %s\n", tmp->NO, tmp->expr);
+  IFNDEF(CONFIG_WATCHPOINT, fail_msg());
+  IFDEF(CONFIG_WATCHPOINT, new_wp(args));
   return 0; 
 }
 
 static int cmd_d(char *args)
 {
+  IFNDEF(CONFIG_WATCHPOINT, fail_msg());
+  IFDEF(CONFIG_WATCHPOINT, free_wp(atoi(args)));
   return 0;  
 }
     
