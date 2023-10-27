@@ -146,8 +146,10 @@ static int cmd_info(char *args){
     switch(arg[0]){
       case 'r':
         isa_reg_display();
+        break;
       case 'w':
         wp_display();
+        break;
     }
   }
   return 0;

@@ -113,7 +113,7 @@ void wp_display()
     WP* tmp = head;
     while(tmp != NULL)
     {
-      Log("Watchpoint %d:    %s\n", tmp->NO, tmp->expr);
+      printf("Watchpoint %d:    %s\n", tmp->NO, tmp->expr);
       tmp = tmp->next;
     }
   }

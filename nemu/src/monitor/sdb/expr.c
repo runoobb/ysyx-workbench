@@ -46,7 +46,7 @@ static struct rule {
   {"[1-9][0-9]*", TK_NUM},
   {"\\(", TK_LPA},
   {"\\)", TK_RPA},
-  {"[$][0-9$rsgta][0-9ap][01]*", TK_REG},
+  {"[$](\\$0$)*(ra$)*(sp$)*(gp$)*(tp$)*(t[0-6]$)*(s[0-9]$)*(s1[01]$)*(a[0-7]$)*", TK_REG},
 
 };
 
@@ -121,8 +121,8 @@ static bool make_token(char *e) {
           case TK_REG:
             tokens[nr_token].type = rules[i].token_type;
             assert(substr_len < 32);
-            for(int j = 1; j < substr_len; j++)
-              tokens[nr_token].str[j-1] = e[position - substr_len + j];
+            for(int j = 0; j < substr_len; j++)
+              tokens[nr_token].str[j] = e[position - substr_len + j];
             tokens[nr_token].str[substr_len] = '\0';
             break;
           default: tokens[nr_token].type = rules[i].token_type;
@@ -257,7 +257,7 @@ word_t expr(char *e, bool *success) {
         opt_stack[top_t] = TK_MIN;
         break;
       case TK_REG:
-        regval = isa_reg_str2val(tokens[i].str, &trace_flag); 
+        regval = isa_reg_str2val(tokens[i].str + 1, &trace_flag); 
         if(!trace_flag){
           Log("No reg %s\n", tokens[i].str);
           return 0;
@@ -267,7 +267,7 @@ word_t expr(char *e, bool *success) {
         break;
       case TK_EQ:
         top_t += 1;
-        opt_stack[top_t] = TK_MIN;
+        opt_stack[top_t] = TK_EQ;
         break;
     }
   
