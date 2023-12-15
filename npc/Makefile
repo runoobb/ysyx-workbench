@@ -1,4 +1,5 @@
 BUILD_DIR = ./build
+TARGET_DIR = ./ 
 
 export PATH := $(PATH):$(abspath ./utils)
 
@@ -33,5 +34,10 @@ clean:
 sim:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	@echo "Write this Makefile by yourself."
-
+	@cd $(TARGET_DIR) && \
+					make && \
+					cd ./logs && \
+					gtkwave vlt_dump.vcd && \
+					cd .. && \
+					make clean
 -include ../Makefile
