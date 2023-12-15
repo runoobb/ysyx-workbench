@@ -168,15 +168,15 @@ static int top_r;
 void eval_once(){
   switch(opt_stack[top_t--]){
     case TK_PLUS:
-      opr_stack[top_r - 1] = opr_stack[top_r] + opr_stack[top_r - 1];
+      opr_stack[top_r - 1] = opr_stack[top_r - 1] + opr_stack[top_r];
       top_r -= 1;
       break;
     case TK_MIN:
-      opr_stack[top_r - 1] = opr_stack[top_r] - opr_stack[top_r - 1];
+      opr_stack[top_r - 1] = opr_stack[top_r - 1] - opr_stack[top_r];
       top_r -= 1;
       break;
     case TK_MUL:
-      opr_stack[top_r - 1] = opr_stack[top_r] * opr_stack[top_r - 1];
+      opr_stack[top_r - 1] = opr_stack[top_r - 1] * opr_stack[top_r];
       top_r -= 1;
       break;
     case TK_EQ:

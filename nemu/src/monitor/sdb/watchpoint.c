@@ -134,7 +134,7 @@ bool scan_wp()
       bool trace_flag = true;
       wp_tmp_val = expr(tmp->expr, &trace_flag);
       if(wp_tmp_val != tmp->preval){
-        Log("Watchpoint %d : %d -> %d\n", tmp->NO, tmp->preval, wp_tmp_val);
+        Log("Watchpoint %d (%s) : %d -> %d\n", tmp->NO, tmp->expr, tmp->preval, wp_tmp_val);
         tmp->preval = wp_tmp_val;
         ret_flag = true;
       }
