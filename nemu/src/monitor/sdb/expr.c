@@ -260,6 +260,7 @@ word_t expr(char *e, bool *success) {
         regval = isa_reg_str2val(tokens[i].str + 1, &trace_flag); 
         if(!trace_flag){
           Log("No reg %s\n", tokens[i].str);
+          *success = false;
           return 0;
         }
         else

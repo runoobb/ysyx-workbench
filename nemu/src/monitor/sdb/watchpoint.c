@@ -30,7 +30,7 @@ void init_wp_pool() {
     wp_pool[i].expr = (char*) calloc(32, sizeof(char));
     wp_pool[i].preval = 0;
   }
-
+  
   head = NULL;
   free_ = wp_pool;
 }
@@ -50,7 +50,7 @@ void new_wp(char* hold)
   WP* flag = head;
   if(head == NULL)
   {
-    head = wp_pool;
+    head = free_;
     assert(wp_pool != NULL);
     free_ = head -> next;
     head -> next = NULL;
@@ -63,7 +63,6 @@ void new_wp(char* hold)
   {
     while(flag -> next != NULL){
       flag = flag -> next;
-      assert(flag != NULL);
     }
     flag -> next = free_;
     free_ = free_ -> next; 
@@ -96,11 +95,23 @@ void free_wp(int ord)
     }
     tmp->next = wp->next;
   }
-  wp->next = free_;
-  wp->expr = NULL;
-  wp->preval = 0;
-  free_ = wp;
-  Log("del success\n");
+  if(free_ == NULL){
+          free_ = wp;
+          wp->preval = 0;
+          wp->next = NULL;
+          wp->expr = NULL;
+  }
+  else{
+    WP* insert_pos = free_;
+    assert(free_ != NULL);
+    while(insert_pos -> next != NULL)
+            insert_pos = insert_pos -> next;
+    wp->expr = NULL;
+    wp->preval = 0;
+    wp->next = NULL;
+    insert_pos -> next = wp;
+    Log("del success\n");
+  } 
   return;
 }
 
