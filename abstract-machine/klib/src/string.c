@@ -15,36 +15,22 @@ size_t strlen(const char *s) {
 }
 
 char *strcpy(char *dst, const char *src) {
-        while(*src)
-        {
-          *dst = *src;
-          dst++;
-          src++;
-        }
-        *dst = 0;
-        return dst;
+    char *ret = dst;
+    while((*dst++ = *src++) != '\0');
+    return ret;
 }
 
 char *strncpy(char *dst, const char *src, size_t n) {
-  for(int i = 0; i < n; i++)
-  {
-    if(i >= strlen(src))
-      *(dst+i) = 0;
-    else
-      *(dst+i) = *(src+i);
-  }
-  return dst;
+    panic("Not implemented");
 }
 
 char *strcat(char *dst, const char *src) {
-  char* head = dst + strlen(dst);
-  while(*src)
-  {
-    *head = *src;
-    src++;
-    head++;
-  }
-  return dst;
+  char *tmp = dst;
+
+  while(*dst)
+          dst++;
+  while((*dst++ = *src++) != '\0');
+  return tmp;
 }
 
 int strcmp(const char *s1, const char *s2) {

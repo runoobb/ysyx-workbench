@@ -6,7 +6,10 @@
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
 int printf(const char *fmt, ...) {
-  panic("Not implemented");  
+  char *outstr = malloc(64);
+  int ret =  sprintf(outstr, fmt);
+  putstr(outstr);
+  return ret;
 }
 
 int vsprintf(char *out, const char *fmt, va_list ap) {
@@ -33,7 +36,7 @@ int sprintf(char *out, const char *fmt, ...) {
                       while(*s)
                       {
                               *out = *s;
-                              putch(*out);
+                              //putch(*out);
                               out++;
                               s++;
                               length++;
@@ -53,7 +56,7 @@ int sprintf(char *out, const char *fmt, ...) {
                       for(int i = bit-1; i >= 0; i--)
                       {
                               *(out+i) = (d_cpy % 10 + 48);
-                              putch(*(out+i));
+                              //putch(*(out+i));
                               d_cpy = d_cpy/10;
                               length++;
                       }
@@ -64,7 +67,7 @@ int sprintf(char *out, const char *fmt, ...) {
           else
           {
                   *out = *fmt;
-                  putch(*out);
+                  //putch(*out);
                   fmt++;
                   out++;
                   length++;
