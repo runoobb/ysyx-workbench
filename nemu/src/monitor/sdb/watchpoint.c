@@ -24,7 +24,7 @@ static WP wp_pool[NR_WP] = {};
 
 void init_wp_pool() {
   int i;
-  for (i = 0; i < NR_WP; i ++) {
+  for (i = 0; i < NR_WP; i++) {
     wp_pool[i].NO = i;
     wp_pool[i].next = (i == NR_WP - 1 ? NULL : &wp_pool[i + 1]);
     wp_pool[i].expr = (char*) calloc(32, sizeof(char));
@@ -153,4 +153,13 @@ bool scan_wp()
     }
   }
   return ret_flag;
+}
+
+void free_all_wp()
+{
+  for(int i = 0 ; i < NR_WP; i++)
+  {
+      free(wp_pool[i].expr);
+  }
+  return;
 }

@@ -34,6 +34,7 @@ static bool g_print_step = false;
 
 void device_update();
 
+#ifdef CONFIG_WATCHPOINT
 static void cpu_watch()
 {
   bool tmp_flag = scan_wp();
@@ -43,7 +44,7 @@ static void cpu_watch()
   }
   return; 
 }
-
+#endif
 
 static void trace_and_difftest(Decode *_this, vaddr_t dnpc) {
 #ifdef CONFIG_ITRACE_COND

@@ -14,6 +14,7 @@
 ***************************************************************************************/
 
 #include <cpu/cpu.h>
+#include <watchpoint.h>
 
 void sdb_mainloop();
 
@@ -24,4 +25,7 @@ void engine_start() {
   /* Receive commands from user. */
   sdb_mainloop();
 #endif
+
+  /* Engine End(Memory Management)*/
+  free_all_wp();
 }

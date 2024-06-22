@@ -252,7 +252,9 @@ void init_sdb() {
   init_regex();
 
   /* Initialize the watchpoint pool. */
+  #ifdef CONFIG_WATCHPOINT
   init_wp_pool();
+  #endif
 
   /* Intialize the iringbuf*/
   init_iringbuf();

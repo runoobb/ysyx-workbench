@@ -14,5 +14,6 @@ void new_wp(char* hold);
 void free_wp(int ord);
 void wp_display();
 bool scan_wp();
+void free_all_wp();
 
 #endif
