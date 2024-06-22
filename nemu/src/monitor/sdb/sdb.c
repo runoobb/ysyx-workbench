@@ -21,11 +21,11 @@
 #include <memory/paddr.h>
 #include <ctype.h>
 #include <watchpoint.h>
+#include <trace.h>
 
 static int is_batch_mode = false;
 
 void init_regex();
-void init_wp_pool();
 
 #ifndef CONFIG_WATCHPOINT
 static void fail_msg()
@@ -253,4 +253,7 @@ void init_sdb() {
 
   /* Initialize the watchpoint pool. */
   init_wp_pool();
+
+  /* Intialize the iringbuf*/
+  init_iringbuf();
 }

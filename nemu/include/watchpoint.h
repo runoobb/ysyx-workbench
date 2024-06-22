@@ -9,6 +9,7 @@ typedef struct watchpoint {
   word_t preval;
 }WP;
 
+void init_wp_pool();
 void new_wp(char* hold);
 void free_wp(int ord);
 void wp_display();
