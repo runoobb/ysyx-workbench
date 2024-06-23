@@ -16,7 +16,7 @@
 #include "sdb.h"
 #include <watchpoint.h>
 
-#define NR_WP 32
+#define NR_WP 16
 
 static WP *head = NULL, *free_ = NULL;
 

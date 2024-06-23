@@ -15,6 +15,7 @@
 
 #include <cpu/cpu.h>
 #include <watchpoint.h>
+#include <trace.h>
 
 void sdb_mainloop();
 
@@ -27,5 +28,11 @@ void engine_start() {
 #endif
 
   /* Engine End(Memory Management)*/
+#ifdef CONFIG_WATCHPOINT
   free_all_wp();
+#endif
+
+#ifdef CONFIG_ITRACE
+  iringbuf_free();
+#endif
 }

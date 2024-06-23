@@ -257,5 +257,7 @@ void init_sdb() {
   #endif
 
   /* Intialize the iringbuf*/
+  #ifdef CONFIG_ITRACE
   init_iringbuf();
+  #endif
 }

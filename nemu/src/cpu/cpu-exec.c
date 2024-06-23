@@ -47,8 +47,8 @@ static void cpu_watch()
 #endif
 
 static void trace_and_difftest(Decode *_this, vaddr_t dnpc) {
-#ifdef CONFIG_ITRACE_COND
-  if (ITRACE_COND) { log_write("%s\n", _this->logbuf); 
+#ifdef CONFIG_ITRACE
+  if (CONFIG_ITRACE_COND) { log_write("%s\n", _this->logbuf); 
     //manage the iringbuf
     iringbuf_update(_this->logbuf);
   }
@@ -143,11 +143,13 @@ void cpu_exec(uint64_t n) {
            (nemu_state.halt_ret == 0 ? ANSI_FMT("HIT GOOD TRAP", ANSI_FG_GREEN) :
             ANSI_FMT("HIT BAD TRAP", ANSI_FG_RED))),
           nemu_state.halt_pc);
-      // print iringbuf if HIT BAD TRAP
-      if(nemu_state.state == NEMU_ABORT || nemu_state.halt_ret == 1){
-        iringbuf_display();
-        iringbuf_free();
-      }
+          #ifdef CONFIG_ITRACE
+          // print iringbuf if HIT BAD TRAP
+          if(nemu_state.state == NEMU_ABORT || nemu_state.halt_ret == 1){
+            iringbuf_display();
+          }
+
+      #endif
       // fall through
     case NEMU_QUIT: statistic();
   }
