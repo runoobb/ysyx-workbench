@@ -57,6 +57,8 @@ static void trace_and_difftest(Decode *_this, vaddr_t dnpc) {
 #endif
   if (g_print_step) { IFDEF(CONFIG_ITRACE, puts(_this->logbuf)); }
   IFDEF(CONFIG_DIFFTEST, difftest_step(_this->pc, dnpc));
+  //_this->pc points to the addr of the latest executed instruction
+  //dnpc points to the addr of the next instruction to be executed 
 }
 
 

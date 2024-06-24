@@ -17,8 +17,26 @@
 #include <cpu/difftest.h>
 #include "../local-include/reg.h"
 
+extern const char *regs[];
+
 bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc) {
-  return false;
+  bool cmpflag = true;
+  for(int i = 0; i < 32; i++)
+  {
+    if(ref_r->gpr[i] != gpr(i))
+    {
+      cmpflag = false;
+      printf("Spike: %s = 0x%lx\n", regs[i], (unsigned long int)ref_r->gpr[i]);
+      printf("Nemu:  %s = 0x%lx\n", regs[i], (unsigned long int)gpr(i));
+    }
+  }
+  if(pc != ref_r->pc)
+  {
+    cmpflag = false;
+    printf("Spike: pc = 0x%lx\n", (unsigned long int)ref_r->pc);
+    printf("Nemu:  pc = 0x%lx\n", (unsigned long int)pc);
+  }
+  return cmpflag;
 }
 
 void isa_difftest_attach() {
