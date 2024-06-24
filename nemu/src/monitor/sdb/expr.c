@@ -217,7 +217,7 @@ word_t expr(char *e, bool *success) {
         break;
       case TK_HNUM:
         top_r += 1;
-        opr_stack[top_r] = atoi(tokens[i].str);
+        sscanf(tokens[i].str, "%x", &opr_stack[top_r]);
         break;
       case TK_LPA:
         top_t += 1;
