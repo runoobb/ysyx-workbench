@@ -92,8 +92,20 @@ static void exec_once(Decode *s, vaddr_t pc) {
 }
 
 static void execute(uint64_t n) {
+// typedef struct Decode {
+//   vaddr_t pc;
+//   vaddr_t snpc; // static next pc
+//   vaddr_t dnpc; // dynamic next pc
+//   ISADecodeInfo isa;
+//   IFDEF(CONFIG_ITRACE, char logbuf[128]);
+// } Decode;
   Decode s;
   for (;n > 0; n --) {
+  //cpu (global variable, type:struct{riscv32_CPU_state})
+  //   typedef struct {
+  //   word_t gpr[MUXDEF(CONFIG_RVE, 16, 32)];
+  //   vaddr_t pc;
+  // } MUXDEF(CONFIG_RV64, riscv64_CPU_state, riscv32_CPU_state);
     exec_once(&s, cpu.pc);
     g_nr_guest_inst ++;
     IFDEF(CONFIG_WATCHPOINT, cpu_watch());

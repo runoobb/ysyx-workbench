@@ -27,6 +27,7 @@ void isa_reg_display() {
         for(int i = 0; i < 32; ++i){
                 printf("%s    =   0x%lx\n", regs[i], (unsigned long int) cpu.gpr[i]);
         }
+        printf("pc    =   0x%lx\n", (unsigned long int) cpu.pc);
 }
 
 word_t isa_reg_str2val(const char *s, bool *success) {
@@ -38,7 +39,10 @@ word_t isa_reg_str2val(const char *s, bool *success) {
     else
       tmp += 1;
   }
-  if (tmp == 32)
+
+  if(strcmp("pc", s) == 0)
+    return cpu.pc;
+  else if (tmp == 32)
   {
     *success = false;
     return 0;

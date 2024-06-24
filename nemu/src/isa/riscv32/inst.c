@@ -111,5 +111,11 @@ static int decode_exec(Decode *s) {
 
 int isa_exec_once(Decode *s) {
   s->isa.inst.val = inst_fetch(&s->snpc, 4);
+  //snpc is updated after inst_fetch() before decode_exec()
+  //   typedef struct {
+  //   union {
+  //     uint32_t val;
+  //   } inst;
+  // } MUXDEF(CONFIG_RV64, riscv64_ISADecodeInfo, riscv32_ISADecodeInfo);
   return decode_exec(s);
 }

@@ -46,7 +46,7 @@ static struct rule {
   {"[0-9]+", TK_NUM},
   {"\\(", TK_LPA},
   {"\\)", TK_RPA},
-  {"[\\$](\\$0)*(ra)*(sp)*(gp)*(tp)*(t[0-6])*(s[0-9])*(s1[01])*(a[0-7])*", TK_REG},
+  {"[\\$](\\$0)*(pc)*(ra)*(sp)*(gp)*(tp)*(t[0-6])*(s[0-9])*(s1[01])*(a[0-7])*", TK_REG},
 
 };
 
@@ -111,10 +111,10 @@ static bool make_token(char *e) {
               tokens[nr_token].str[j] = e[position - substr_len + j];
             tokens[nr_token].str[substr_len] = '\0';
             break;
-                  case TK_HNUM:
-                    tokens[nr_token].type = rules[i].token_type;
-                    assert(substr_len < 32);
-                    for(int j = 0; j < substr_len; j++)
+          case TK_HNUM:
+            tokens[nr_token].type = rules[i].token_type;
+            assert(substr_len < 32);
+            for(int j = 0; j < substr_len; j++)
               tokens[nr_token].str[j] = e[position - substr_len + j];
             tokens[nr_token].str[substr_len] = '\0';
             break;
