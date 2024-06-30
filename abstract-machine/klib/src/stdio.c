@@ -100,6 +100,13 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
                       out = out + delta_length;
                       length += delta_length;
                       break;
+              case 'c':
+                      d = va_arg(ap, int);
+                      delta_length = 1;
+                      *out = (char)d;  
+                      out = out + delta_length;
+                      length += delta_length;
+                      break;
               case '0':
                 fmt++;
                 switch(*fmt)
@@ -185,6 +192,13 @@ int sprintf(char *out, const char *fmt, ...) {
               case 'x':
                       d = va_arg(ap, int);
                       delta_length = my_itoa(d, out, 16, false, false, 0);
+                      out = out + delta_length;
+                      length += delta_length;
+                      break;
+              case 'c':
+                      d = va_arg(ap, int);
+                      delta_length = 1;
+                      *out = (char)d;  
                       out = out + delta_length;
                       length += delta_length;
                       break;
