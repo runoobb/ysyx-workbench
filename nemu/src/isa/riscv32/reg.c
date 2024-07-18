@@ -20,13 +20,19 @@ const char *regs[] = {
   "$0", "ra", "sp", "gp", "tp", "t0", "t1", "t2",
   "s0", "s1", "a0", "a1", "a2", "a3", "a4", "a5",
   "a6", "a7", "s2", "s3", "s4", "s5", "s6", "s7",
-  "s8", "s9", "s10", "s11", "t3", "t4", "t5", "t6"
+  "s8", "s9", "s10", "s11", "t3", "t4", "t5", "t6",
+  "mcause", "mstatus", "mepc", "mtvec",
 };
 
 void isa_reg_display() {
         for(int i = 0; i < 32; ++i){
                 printf("%s    =   0x%lx\n", regs[i], (unsigned long int) cpu.gpr[i]);
         }
+
+        for(int i = 0; i < 4; ++i){
+          printf("%s    =   0x%lx\n", regs[i+32], (unsigned long int) cpu.csr[i]);
+        }
+
         printf("pc    =   0x%lx\n", (unsigned long int) cpu.pc);
 }
 
@@ -36,6 +42,14 @@ word_t isa_reg_str2val(const char *s, bool *success) {
   {
     if(strcmp(regs[tmp], s) == 0)
       return cpu.gpr[tmp];
+    else
+      tmp += 1;
+  }
+
+  while(tmp < 36)
+  {
+    if(strcmp(regs[tmp], s) == 0)
+      return cpu.csr[tmp - 32];
     else
       tmp += 1;
   }

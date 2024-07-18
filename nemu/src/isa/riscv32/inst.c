@@ -38,13 +38,26 @@ enum {
 #define immS() do { *imm = (SEXT(((BITS(i, 31, 25) << 5) + BITS(i, 11, 7)), 12)); } while(0)
 #define immB() do { *imm = (SEXT((BITS(i, 31, 31) << 12) + (BITS(i, 30, 25) << 5) + (BITS(i, 11, 8) << 1) + (BITS(i, 7, 7) << 11), 13)); } while(0)  
 
-static void decode_operand(Decode *s, int *rd, word_t *src1, word_t *src2, word_t *imm, int type) {
+int csr_decode(word_t key_imm)
+{
+  int res = 0;
+  switch(key_imm)
+  {
+    case 0x342: res = 0; break;//mcause
+    case 0x300: res = 1; break;//mstatus
+    case 0x341: res = 2; break;//mepc
+    case 0x305: res = 3; break;//mtvec
+  }
+  return res;
+}
+
+static void decode_operand(Decode *s, int *rd, word_t *src1, word_t *src2, word_t *imm, int *val_imm, int type) {
   uint32_t i = s->isa.inst.val;
   int rs1 = BITS(i, 19, 15);
   int rs2 = BITS(i, 24, 20);
   *rd     = BITS(i, 11, 7);
   switch (type) {
-    case TYPE_I: src1R();          immI(); break;
+    case TYPE_I: src1R();          immI(); *val_imm = csr_decode(*imm); break;
     case TYPE_U:                   immU(); break;
     case TYPE_S: src1R(); src2R(); immS(); break;
     case TYPE_J:                   immJ(); break;
@@ -56,11 +69,12 @@ static void decode_operand(Decode *s, int *rd, word_t *src1, word_t *src2, word_
 static int decode_exec(Decode *s) {
   int rd = 0;
   word_t src1 = 0, src2 = 0, imm = 0;
+  int val_imm = 0;
   s->dnpc = s->snpc;
 
 #define INSTPAT_INST(s) ((s)->isa.inst.val)
 #define INSTPAT_MATCH(s, name, type, ... /* execute body */ ) { \
-  decode_operand(s, &rd, &src1, &src2, &imm, concat(TYPE_, type)); \
+  decode_operand(s, &rd, &src1, &src2, &imm, &val_imm, concat(TYPE_, type)); \
   __VA_ARGS__ ; \
 }
 
@@ -108,7 +122,10 @@ static int decode_exec(Decode *s) {
   INSTPAT("??????? ????? ????? 100 ????? 11000 11", blt    , B, s->dnpc = ((signed)src1 < (signed)src2) ? s->pc + imm : s->dnpc);
   INSTPAT("??????? ????? ????? 110 ????? 11000 11", bltu   , B, s->dnpc = ((unsigned)src1 < (unsigned) src2) ? s->pc + imm : s->dnpc);
   INSTPAT("??????? ????? ????? ??? ????? 11011 11", jal    , J, s->dnpc = s->pc + imm, R(rd) = s->snpc);
-  INSTPAT("??????? ????? ????? 000 ????? 11001 11", jalr   , I, s->dnpc = src1 + imm, R(rd) = s->snpc);  
+  INSTPAT("??????? ????? ????? 000 ????? 11001 11", jalr   , I, s->dnpc = src1 + imm, R(rd) = s->snpc);
+  INSTPAT("??????? ????? ????? 001 ????? 11100 11", csrrw  , I, R(rd) = cpu.csr[val_imm]; cpu.csr[val_imm] = src1);
+  INSTPAT("??????? ????? ????? 010 ????? 11100 11", csrrs  , I, R(rd) = cpu.csr[val_imm]; cpu.csr[val_imm] = cpu.csr[val_imm] | src1);
+  INSTPAT("??????? ????? ????? 011 ????? 11100 11", csrrc  , I, R(rd) = cpu.csr[val_imm]; cpu.csr[val_imm] = cpu.csr[val_imm] & ~src1);
   INSTPAT("0000000 00001 00000 000 00000 11100 11", ebreak , N, NEMUTRAP(s->pc, R(10))); // R(10) is $a0
   INSTPAT("??????? ????? ????? ??? ????? ????? ??", inv    , N, INV(s->pc));
   INSTPAT_END();
@@ -120,11 +137,11 @@ static int decode_exec(Decode *s) {
 
 int isa_exec_once(Decode *s) {
   s->isa.inst.val = inst_fetch(&s->snpc, 4);
+  return decode_exec(s);
   //snpc is updated after inst_fetch() before decode_exec()
   //   typedef struct {
   //   union {
   //     uint32_t val;
   //   } inst;
   // } MUXDEF(CONFIG_RV64, riscv64_ISADecodeInfo, riscv32_ISADecodeInfo);
-  return decode_exec(s);
 }

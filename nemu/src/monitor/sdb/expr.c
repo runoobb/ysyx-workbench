@@ -46,7 +46,7 @@ static struct rule {
   {"[0-9]+", TK_NUM},
   {"\\(", TK_LPA},
   {"\\)", TK_RPA},
-  {"[\\$](\\$0)*(pc)*(ra)*(sp)*(gp)*(tp)*(t[0-6])*(s[0-9])*(s1[01])*(a[0-7])*", TK_REG},
+  {"[\\$](\\$0)*(pc)*(mcause)*(mstatus)*(mepc)*(mtvec)*(ra)*(sp)*(gp)*(tp)*(t[0-6])*(s[0-9])*(s1[01])*(a[0-7])*", TK_REG},
 
 };
 
