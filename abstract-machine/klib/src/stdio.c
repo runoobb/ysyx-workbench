@@ -5,7 +5,7 @@
 
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
-int my_itoa(int num, char *str, int base, bool leading_zeros, bool padding, int width) {
+int my_itoa(uint32_t num, char *str, int base, bool leading_zeros, bool padding, int width) {
   char *digits = "0123456789ABCDEF";
   int ilen = 0;
   bool is_negative = false;
