@@ -26,14 +26,18 @@ const char *regs[] = {
 
 void isa_reg_display() {
         for(int i = 0; i < 32; ++i){
-                printf("%s    =   0x%lx\n", regs[i], (unsigned long int) cpu.gpr[i]);
+                printf("%-12s=  0x%-12lx", regs[i], (unsigned long int) cpu.gpr[i]);
+                if(i % 4 == 3)
+                  printf("\n");
         }
 
         for(int i = 0; i < 4; ++i){
-          printf("%s    =   0x%lx\n", regs[i+32], (unsigned long int) cpu.csr[i]);
+          printf("%-12s=  0x%-12lx", regs[i+32], (unsigned long int) cpu.csr[i]);
+          if(i % 4 == 3)
+            printf("\n");
         }
 
-        printf("pc    =   0x%lx\n", (unsigned long int) cpu.pc);
+        printf("%-12s=  0x%-12lx\n", "pc", (unsigned long int) cpu.pc);
 }
 
 word_t isa_reg_str2val(const char *s, bool *success) {

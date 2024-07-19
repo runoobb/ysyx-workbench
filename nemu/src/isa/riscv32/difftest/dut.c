@@ -26,15 +26,26 @@ bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc) {
     if(ref_r->gpr[i] != gpr(i))
     {
       cmpflag = false;
-      printf("Spike: %s = 0x%lx\n", regs[i], (unsigned long int)ref_r->gpr[i]);
-      printf("Nemu:  %s = 0x%lx\n", regs[i], (unsigned long int)gpr(i));
+      printf("Spike: %-8s = 0x%-8lx\n", regs[i], (unsigned long int)ref_r->gpr[i]);
+      printf("Nemu : %-8s = 0x%-8lx\n", regs[i], (unsigned long int)gpr(i));
     }
   }
+
+  // for(int i = 0; i < 4; i++)
+  // {
+  //   if(ref_r->csr[i] != csr[i])
+  //   {
+  //     cmpflag = false;
+  //     printf("Spike: %-8s = 0x%-8lx\n", regs[i], (unsigned long int)ref_r->gpr[i]);
+  //     printf("Nemu : %-8s = 0x%-8lx\n", regs[i], (unsigned long int)gpr(i));      
+  //   }
+  // }
+
   if(pc != ref_r->pc)
   {
     cmpflag = false;
     printf("Spike: pc = 0x%lx\n", (unsigned long int)ref_r->pc);
-    printf("Nemu:  pc = 0x%lx\n", (unsigned long int)pc);
+    printf("Nemu : pc = 0x%lx\n", (unsigned long int)pc);
   }
   return cmpflag;
 }
