@@ -11,10 +11,10 @@ Context* __am_irq_handle(Context *c) {
       case 0:
         ev.event = EVENT_YIELD; break;
       default:
-        for(int i = 0; i < 32; i++){
-          printf("%x\n", c->gpr[i]);
-        }        
-        printf("mcause:%x\nmstatus:%x\nmepc:%x\n", c->mcause, c->mstatus, c->mepc); 
+        // for(int i = 0; i < 32; i++){
+        //   printf("%x\n", c->gpr[i]);
+        // }        
+        // printf("mcause:%x\nmstatus:%x\nmepc:%x\n", c->mcause, c->mstatus, c->mepc); 
         ev.event = EVENT_ERROR; break;
     }
 
