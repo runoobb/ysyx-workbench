@@ -15,6 +15,8 @@
 
 #include <isa.h>
 #include <memory/paddr.h>
+#include <watchpoint.h>
+#include <trace.h>
 
 void init_rand();
 void init_log(const char *log_file);
@@ -160,3 +162,14 @@ void am_init_monitor() {
   welcome();
 }
 #endif
+
+/* Engine End(Memory Management)*/
+void free_monitor(){
+#ifdef CONFIG_WATCHPOINT
+  free_all_wp();
+#endif
+
+#ifdef CONFIG_ITRACE
+  iringbuf_free();
+#endif
+}
