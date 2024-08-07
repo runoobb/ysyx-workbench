@@ -45,7 +45,8 @@ void *malloc(size_t size) {
   size  = (size_t)ROUNDUP(size, 8);
   char *old = malloc_addr;
   malloc_addr += size;
-  for (uint64_t *p = (uint64_t *)old; p != (uint64_t *)malloc_addr; p ++) {
+  assert((uint32_t *)malloc_addr >= (uint32_t *)heap.start && (uint32_t *)malloc_addr <= (uint32_t *)heap.end);
+  for (uint32_t *p = (uint32_t *)old; p != (uint32_t *)malloc_addr; p ++) {
     *p = 0;
   }
   return old;
