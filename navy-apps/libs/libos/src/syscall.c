@@ -66,12 +66,30 @@ int _open(const char *path, int flags, mode_t mode) {
 }
 
 int _write(int fd, void *buf, size_t count) {
-  _exit(SYS_write);
+  _syscall_(SYS_write, fd, buf, count);
   return 0;
 }
 
+
+//TODO:
 void *_sbrk(intptr_t increment) {
-  return (void *)-1;
+  static uintptr_t program_break = 0;
+  extern void *end;
+  if(program_break == 0)
+  {
+    program_break = end;
+    _syscall_(SYS_brk, program_break, 0, 0);
+  }
+
+  else
+  {
+    _syscall_(SYS_brk, program_break + increment, 0, 0);
+  }
+  program_break = program_break + increment;
+  char* buff;
+  sprintf(buff, "Malloc\n");
+  _write(1, buff, 7);
+  return (void *) program_break;
 }
 
 int _read(int fd, void *buf, size_t count) {
