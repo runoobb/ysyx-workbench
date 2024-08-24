@@ -33,7 +33,7 @@ void do_syscall(Context *c) {
   a[3] = c->GPR4;
   switch (a[0]) {
     case SYS_exit:
-      printf("Exit:a[1] = %d\n", a[1]);
+      printf("Exit:a[1], a[2], a[3] = %d, %d, %d\n", a[1], a[2], a[3]);
       if(a[1] == 0)
         halt(0);
       else
@@ -47,8 +47,7 @@ void do_syscall(Context *c) {
       c->GPRx = 0;
       break;
     case SYS_brk:
-      //TODO:
-      printf("Brk:a[1] = %d\n", a[1]);
+      printf("Brk:a[1], a[2], a[3] = %x, %x, %x\n", a[1], a[2], a[3]);
       c->GPRx = 0;
       break;
     case SYS_write:

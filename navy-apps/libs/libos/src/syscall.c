@@ -73,23 +73,22 @@ int _write(int fd, void *buf, size_t count) {
 
 //TODO:
 void *_sbrk(intptr_t increment) {
-  static uintptr_t program_break = 0;
-  extern void *end;
-  if(program_break == 0)
+  static uintptr_t pbrk = 0;
+  void *prev_brk;
+  extern char end;
+  if(pbrk == 0)
   {
-    program_break = end;
-    _syscall_(SYS_brk, program_break, 0, 0);
+    pbrk = &end;
+    _syscall_(SYS_brk, pbrk, 0, 0);
   }
 
   else
   {
-    _syscall_(SYS_brk, program_break + increment, 0, 0);
+    _syscall_(SYS_brk, pbrk + increment, 0, 0);
   }
-  program_break = program_break + increment;
-  char* buff;
-  sprintf(buff, "Malloc\n");
-  _write(1, buff, 7);
-  return (void *) program_break;
+  prev_brk = (void *)pbrk;
+  pbrk = pbrk + increment;
+  return prev_brk;
 }
 
 int _read(int fd, void *buf, size_t count) {

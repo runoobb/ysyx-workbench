@@ -12,6 +12,12 @@ int main() {
   //     j = 0;
   //   }
   // }
-  printf("Hello World from Navy-apps for the %dth time!\n", i);
+  char *ptr0;
+  ptr0 = (char *)malloc(2);
+  char *ptr1;
+  ptr1 = (char *)malloc(2);
+  char *ptr2;
+  ptr2 = (char *)malloc(4);
+  // printf("Hello World from Navy-apps for the %dth time!\n", i);
   return 0;
 }
