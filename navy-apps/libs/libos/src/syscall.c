@@ -71,23 +71,28 @@ int _write(int fd, void *buf, size_t count) {
 }
 
 
-//TODO:
 void *_sbrk(intptr_t increment) {
   static uintptr_t pbrk = 0;
-  void *prev_brk;
+  // Bug Fixed: debugStrBuf must be initialized befor sprintf, or addr = 0x0 out of bound
+  // TODO: How malloc() invoke sbrk()
+  // Q: Why only first malloc() invoke sbrk() twice
   extern char end;
   if(pbrk == 0)
   {
-    pbrk = &end;
+    pbrk = (uintptr_t)&end;
     _syscall_(SYS_brk, pbrk, 0, 0);
+    char debugStrBuf4[16];
+    sprintf(debugStrBuf4, "4:%x\n", &end);
+    write(1, debugStrBuf4, 16);
   }
 
-  else
-  {
-    _syscall_(SYS_brk, pbrk + increment, 0, 0);
-  }
-  prev_brk = (void *)pbrk;
+
+  _syscall_(SYS_brk, pbrk + increment, 0, 0);
+  void *prev_brk = (void *)pbrk;
   pbrk = pbrk + increment;
+  char *debugStrBuf5[16];
+  sprintf(debugStrBuf5, "5:%x\n", prev_brk);
+  write(1, debugStrBuf5, 16);
   return prev_brk;
 }
 
