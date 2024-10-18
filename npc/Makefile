@@ -1,5 +1,4 @@
 BUILD_DIR = ./build
-TARGET_DIR = ./Digital_Lab
 SUB_DIR = ./
 
 export PATH := $(PATH):$(abspath ./utils)
