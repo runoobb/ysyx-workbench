@@ -7,6 +7,6 @@ class InstrMem extends Module {
         val Instr = Output(UInt(32.W))
     })
     // addi
-    val InstrROM = VecInit(1.U, 2.U, 4.U, 8.U)
-    io.Instr := InstrROM(io.RdAddr)
+    val InstrMem = SyncReadMem(4, UInt(32.W))
+    io.Instr := InstrMem.read(io.RdAddr, true.B)
 }
