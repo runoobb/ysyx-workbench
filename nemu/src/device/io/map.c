@@ -59,8 +59,10 @@ word_t map_read(paddr_t addr, int len, IOMap *map) {
   invoke_callback(map->callback, offset, len, false); // prepare data to read
   word_t ret = host_read(map->space + offset, len);
   #ifdef CONFIG_DTRACE
-    if(CONFIG_DTRACE_COND)
-      printf("Read From 0x%08x, Device %s\n", addr, map->name);
+    if(CONFIG_DTRACE_COND){
+      printf("D: Read From 0x%08x, Device %s\n", addr, map->name);
+      log_write("D: Read From 0x%08x, Device %s\n", addr, map->name);
+    }
   #endif
   return ret;
 }
@@ -72,7 +74,9 @@ void map_write(paddr_t addr, int len, word_t data, IOMap *map) {
   host_write(map->space + offset, len, data);
   invoke_callback(map->callback, offset, len, true);
   #ifdef CONFIG_DTRACE
-    if(CONFIG_DTRACE_COND)
-      printf("Write To 0x%08x, Device %s\n", addr, map->name);
+    if(CONFIG_DTRACE_COND){
+      printf("D: Write To 0x%08x, Device %s\n", addr, map->name);
+      log_write("D: Write To 0x%08x, Device %s\n", addr, map->name);
+    }
   #endif
 }

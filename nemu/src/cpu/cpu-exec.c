@@ -48,7 +48,9 @@ static void cpu_watch()
 
 static void trace_and_difftest(Decode *_this, vaddr_t dnpc) {
 #ifdef CONFIG_ITRACE
-  if (CONFIG_ITRACE_COND) { log_write("%s\n", _this->logbuf); 
+  if (CONFIG_ITRACE_COND) { log_write("%s\n", _this->logbuf);
+    extern int is_batch_mode; 
+    if(is_batch_mode){printf("I: %s\n", _this->logbuf);}
     //manage the iringbuf
     iringbuf_update(_this->logbuf);
   }

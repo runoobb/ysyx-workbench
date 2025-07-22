@@ -165,11 +165,17 @@ void am_init_monitor() {
 
 /* Engine End(Memory Management)*/
 void free_monitor(){
+
 #ifdef CONFIG_WATCHPOINT
   free_all_wp();
 #endif
 
 #ifdef CONFIG_ITRACE
   iringbuf_free();
+#endif
+
+#ifdef CONFIG_PMEM_MALLOC
+  free(pmem);
+  if(!pmem) {pmem = NULL;}
 #endif
 }

@@ -77,22 +77,15 @@ void *_sbrk(intptr_t increment) {
   // TODO: How malloc() invoke sbrk()
   // Q: Why only first malloc() invoke sbrk() twice
   extern char end;
-  if(pbrk == 0)
-  {
+  if(pbrk == 0) {
     pbrk = (uintptr_t)&end;
     _syscall_(SYS_brk, pbrk, 0, 0);
-    char debugStrBuf4[16];
-    sprintf(debugStrBuf4, "4:%x\n", &end);
-    write(1, debugStrBuf4, 16);
   }
-
-
-  _syscall_(SYS_brk, pbrk + increment, 0, 0);
   void *prev_brk = (void *)pbrk;
-  pbrk = pbrk + increment;
-  char *debugStrBuf5[16];
-  sprintf(debugStrBuf5, "5:%x\n", prev_brk);
-  write(1, debugStrBuf5, 16);
+  if(increment) {
+    _syscall_(SYS_brk, pbrk + increment, 0, 0);
+    pbrk = pbrk + increment;
+  }
   return prev_brk;
 }
 

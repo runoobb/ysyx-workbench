@@ -184,4 +184,9 @@ $(RAMDISK): fsimg
 
 ramdisk: $(RAMDISK)
 
+# make at navy-apps/tests/dummy directory
+cp:
+	@echo $(PWD)
+	@mv ./build/$(CPIMG) $(OS_HOME)/build
+
 .PHONY: fsimg ramdisk

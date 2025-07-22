@@ -24,6 +24,23 @@ word_t isa_raise_intr(word_t NO, vaddr_t epc) {
     //1 mstatus
     //2 mepc
     //3 mtvec
+
+  // mcause correspond to /home/ykwang/Templates/ysyx-workbench/abstract-machine/am/src/riscv/nemu/cte.c
+  // not sure correct or not
+
+  // ETRACE
+  extern int is_batch_mode;
+  if(is_batch_mode){
+    printf("E: mcause = %x    mstatus = %x    mepc = %x\n", cpu.csr[0], cpu.csr[1], cpu.csr[2]);
+    switch(cpu.csr[0]){
+      case -1:
+        printf("E: event yield\n"); break;
+      case 0 ... 19:
+        printf("E: event syscall\n"); break;
+      default:
+        printf("E: event error\n"); break;
+    }
+  }
   cpu.csr[2] = epc;
   cpu.csr[0] = NO;
   return cpu.csr[3];

@@ -1,22 +1,7 @@
-/***************************************************************************************
-* Copyright (c) 2014-2022 Zihao Yu, Nanjing University
-*
-* NEMU is licensed under Mulan PSL v2.
-* You can use this software according to the terms and conditions of the Mulan PSL v2.
-* You may obtain a copy of Mulan PSL v2 at:
-*          http://license.coscl.org.cn/MulanPSL2
-*
-* THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND,
-* EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT,
-* MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
-*
-* See the Mulan PSL v2 for more details.
-***************************************************************************************/
-
+// from nemu
 #include <memory/host.h>
 #include <memory/paddr.h>
 #include <device/mmio.h>
-#include <isa.h>
 
 #if   defined(CONFIG_PMEM_MALLOC)
 static uint8_t *pmem = NULL;
@@ -36,9 +21,10 @@ static void pmem_write(paddr_t addr, int len, word_t data) {
   host_write(guest_to_host(addr), len, data);
 }
 
+// TODO
 static void out_of_bound(paddr_t addr) {
   panic("address = " FMT_PADDR " is out of bound of pmem [" FMT_PADDR ", " FMT_PADDR "] at pc = " FMT_WORD,
-      addr, PMEM_LEFT, PMEM_RIGHT, cpu.pc);
+      addr, PMEM_LEFT, PMEM_RIGHT, dut_reg.pc);
 }
 
 void init_mem() {
@@ -50,14 +36,12 @@ void init_mem() {
   Log("physical memory area [" FMT_PADDR ", " FMT_PADDR "]", PMEM_LEFT, PMEM_RIGHT);
 }
 
-extern int is_batch_mode;
+
 word_t paddr_read(paddr_t addr, int len) {
   
   #ifdef CONFIG_MTRACE
   if(CONFIG_MTRACE_COND){
-    
-    if(is_batch_mode) {printf("M: Read From 0x%08x\n", addr);}
-    log_write("M: Read From 0x%08x\n", addr);
+    Log("MTrace: Read From 0x%08x\n", addr);
   }
   #endif
 
@@ -71,8 +55,7 @@ void paddr_write(paddr_t addr, int len, word_t data) {
   
   #ifdef CONFIG_MTRACE
   if(CONFIG_MTRACE_COND){
-    if(is_batch_mode) {printf("M: Write To 0x%08x\n", addr);}
-    log_write("M: Write to 0x%08x\n", addr);
+    Log("MTrace: Write to 0x%08x\n", addr);
   }
   #endif
 

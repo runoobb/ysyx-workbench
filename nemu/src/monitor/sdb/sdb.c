@@ -23,7 +23,7 @@
 #include <watchpoint.h>
 #include <trace.h>
 
-static int is_batch_mode = false;
+int is_batch_mode = false;
 
 void init_regex();
 
