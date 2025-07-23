@@ -11,8 +11,9 @@
 #include <cmath>
 
 #define DUMPWAVE_ON 1
-#define INST_MEMORY_SIZE 1000
-#define DATA_MEMORY_SIZE 1024
+
+#define MAX_CYCLES 100000
+#define EBREAK 1048691
 
 typedef struct {
   uint32_t x[32];
@@ -21,6 +22,6 @@ typedef struct {
 } regfile;
 
 
-void npc_init(int argc, char** argv, uint8_t* inst_mem, uint8_t* data_mem);
+void npc_init(int argc, char** argv);
 
 #endif

@@ -43,7 +43,7 @@ typedef uint16_t ioaddr_t;
 #define CONFIG_HAS_AUDIO 1
 #define CONFIG_MSIZE 0x8000000
 #define CONFIG_CC_O2 1
-#define CONFIG_DEVICE 1
+// #define CONFIG_DEVICE 1 (npc is not supporting device right now)
 #define CONFIG_HAS_KEYBOARD 1
 #define CONFIG_MODE_SYSTEM 1
 #define CONFIG_MEM_RANDOM 1

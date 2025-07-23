@@ -1215,7 +1215,7 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__6(Vtop___024root* vlSelf) 
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___nba_sequent__TOP__6\n"); );
     // Body
-    vlSelf->top__DOT__pc = ((IData)(vlSelf->rst) ? 0U
+    vlSelf->top__DOT__pc = ((IData)(vlSelf->rst) ? 0x80000000U
                              : (((IData)(vlSelf->top__DOT__u0_riscv_npc__DOT__PCAsrc_o)
                                   ? vlSelf->top__DOT__imm
                                   : 4U) + vlSelf->top__DOT__u0_riscv_npc__DOT__npc_add1));

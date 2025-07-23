@@ -16,7 +16,7 @@ module riscv_npc (
 
 always@(posedge clk or posedge rst) begin
     if(rst) begin
-        pc_i <= 32'h0; // Reset PC to 0
+        pc_i <= 32'h8000_0000; // Reset PC to 0
     end else begin
         pc_i <= npc;
     end

@@ -4,6 +4,11 @@
 #include "include/include.h"
 #include "verilated.h"
 #include "verilated_fst_c.h"
+#include <common.h>
+#include <memory/paddr.h>
+#include <memory/vaddr.h>
+#include <memory/host.h>
+
 
 #include <iostream>
 #include <termios.h>
@@ -16,8 +21,6 @@ bool diff_commit  = false;
 bool system_exit  = false;
 int  good_trap    = false;
 
-uint8_t* inst_mem;
-uint8_t* data_mem;
 regfile dut_reg;
 
 #ifdef DUMPWAVE_ON
@@ -47,20 +50,18 @@ int main(int argc, char** argv, char** env){
         fstp->open("/home/ykwang/Templates/ysyx-workbench/npc/obj_dir/sim.fst");
     #endif
 
-    // initialize signal
-    top->clk = 0;
+    // initialize signal and reset pc
+    top->clk = 1;
     top->rst = 0;
     top->eval();
-
+    top->clk = 0;
+    top->rst = !0;
+    top->eval();
+    top->rst = 0;
     //
-    inst_mem = (uint8_t* )malloc(sizeof(uint8_t) * INST_MEMORY_SIZE);
-    data_mem = (uint8_t* )malloc(sizeof(uint8_t) * DATA_MEMORY_SIZE);
-    npc_init(argc, argv, inst_mem, data_mem);
-
+    npc_init(argc, argv);
     // sim cycle nums
     int cycles = 0;
-    #define MAX_CYCLES 100000
-    #define EBREAK 1048691
     // simulation loop 
     while (!contextp->gotFinish() & cycles < MAX_CYCLES & top->inst_i != EBREAK) {
         // clk driver
@@ -103,29 +104,19 @@ void dump_wave(VerilatedContext* contextp,VerilatedFstC* fstp,Vtop* top)
 }
 #endif
 
-// data_mem_read(top->data_ce_o, top->data_we_o, top->data_addr_o, &(top->data_i));
+// data_mem_read(top->data_ce_o, top->data_we_o, top->mem_to_reg_o, top->data_addr_o, &(top->data_i));
 void data_mem_read(bool ce, bool we, bool valid, uint32_t data_addr, uint32_t* data_i){
-    if(valid & data_addr >= DATA_MEMORY_SIZE) {
-        printf("illegal addr: 0x%x", data_addr);
-        assert(data_addr < DATA_MEMORY_SIZE);
-        assert(data_addr % 4 == 0);        
-    }
-  if(ce & !we & valid) *data_i = (uint32_t)(data_mem[data_addr + 3] + data_mem[data_addr + 2] * (uint32_t)std::pow(2, 8) + data_mem[data_addr + 1] * (uint32_t)std::pow(2, 16) + data_mem[data_addr + 0] * (uint32_t)std::pow(2, 24));
+  if(ce & !we & valid) *data_i = vaddr_read(data_addr, 4);
 }
 
 // data_mem_write(top->data_ce_o, top->data_we_o, top->data_addr_o)
 void data_mem_write(bool ce, bool we, uint32_t data_addr, uint32_t* data_o){
   if(ce & we){
-    data_mem[data_addr] = static_cast<uint8_t>(*data_o / std::pow(2, 24));
-    data_mem[data_addr + 1] = static_cast<uint8_t>(*data_o / std::pow(2, 16));
-    data_mem[data_addr + 2] = static_cast<uint8_t>(*data_o / std::pow(2, 8));
-    data_mem[data_addr + 3] = static_cast<uint8_t>(*data_o);
+    vaddr_write(data_addr, 4, *data_o);
   }
 }
 
-// inst_mem_read(top->inst_ce_o, top->inst_addr_o &(top->inst_i))
+// inst_mem_read(top->inst_ce_o, top->inst_addr_o, &(top->inst_i))
 void inst_mem_read(bool ce, uint32_t inst_addr, uint32_t* inst_i){
-  assert(inst_addr < INST_MEMORY_SIZE);
-  if(ce) *inst_i = (uint32_t)(inst_mem[inst_addr + 3] + inst_mem[inst_addr + 2] * (uint32_t)std::pow(2, 8) + inst_mem[inst_addr + 1] * (uint32_t)std::pow(2, 16) + inst_mem[inst_addr + 0] * (uint32_t)std::pow(2, 24));
-  printf("INST: %x\n", (uint32_t)(inst_mem[inst_addr + 3] + inst_mem[inst_addr + 2] * (uint32_t)std::pow(2, 8) + inst_mem[inst_addr + 1] * (uint32_t)std::pow(2, 16) + inst_mem[inst_addr + 0] * (uint32_t)std::pow(2, 24)));
+  if(ce) *inst_i = vaddr_ifetch(inst_addr, 4);
 }
