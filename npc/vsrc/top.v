@@ -16,7 +16,9 @@ module top(
 	output wire              data_we_o,	 // write enable to data_mem
     output wire              data_ce_o,  // enable to data_mem
 	output wire[31:0]        data_addr_o,
-	output wire[31:0]        data_o       // store data to  data_mem
+	output wire[31:0]        data_o,       // store data to  data_mem
+
+	output wire				 mem_to_reg_o
 
 );
 
@@ -77,7 +79,10 @@ wire [4:0] inst_rd_idx_field = inst_i[11:7];
 wire [`RegBus] rd_val;
 wire [`RegBus] alu_p;
 
+
 assign rd_val = mem_to_reg ? data_i : alu_p;
+
+assign mem_to_reg_o = mem_to_reg;
 
 riscv_regfile u0_riscv_regfile(
 	.clk(clk),
@@ -121,15 +126,14 @@ assign data_we_o = mem_wr;
 
 // DPI-C
 import "DPI-C" function void get_dut_regs(
-	input longint dut_pc, input longint dut_x0, input longint dut_x1, input longint dut_x2, input longint dut_x3, input longint dut_x4, input longint dut_x5,
-    input longint dut_x6, input longint dut_x7, input longint dut_x8, input longint dut_x9, input longint dut_x10, input longint dut_x11, input longint dut_x12,input longint dut_x13, input longint dut_x14, 
-    input longint dut_x15, input longint dut_x16, input longint dut_x17, input longint dut_x18, input longint dut_x19, input longint dut_x20, input longint dut_x21, input longint dut_x22, input longint dut_x23,
-    input longint dut_x24, input longint dut_x25, input longint dut_x26, input longint dut_x27, input longint dut_x28, input longint dut_x29, input longint dut_x30, input longint dut_x31, 
-    input longint dut_mstatus, input longint dut_mtvec, input longint dut_mepc, input longint dut_mcaus
+	input integer dut_pc, input integer dut_x0, input integer dut_x1, input integer dut_x2, input integer dut_x3, input integer dut_x4, input integer dut_x5,
+    input integer dut_x6, input integer dut_x7, input integer dut_x8, input integer dut_x9, input integer dut_x10, input integer dut_x11, input integer dut_x12,input integer dut_x13, input integer dut_x14, 
+    input integer dut_x15, input integer dut_x16, input integer dut_x17, input integer dut_x18, input integer dut_x19, input integer dut_x20, input integer dut_x21, input integer dut_x22, input integer dut_x23,
+    input integer dut_x24, input integer dut_x25, input integer dut_x26, input integer dut_x27, input integer dut_x28, input integer dut_x29, input integer dut_x30, input integer dut_x31
 );
 
 always@(*) begin
-	get_dut_regs(pc, u0_riscv_regfile.regfile[0], u0_riscv_regfile.regfile[1]
+	get_dut_regs(pc, u0_riscv_regfile.regfile[0], u0_riscv_regfile.regfile[1],
 	u0_riscv_regfile.regfile[2], u0_riscv_regfile.regfile[3],
 	u0_riscv_regfile.regfile[4], u0_riscv_regfile.regfile[5],
 	u0_riscv_regfile.regfile[6], u0_riscv_regfile.regfile[7],

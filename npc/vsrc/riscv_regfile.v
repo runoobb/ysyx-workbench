@@ -39,4 +39,5 @@ module riscv_regfile(
     // read registers
     assign rs1_val_o = regfile[rs1_idx_i];
     assign rs2_val_o = regfile[rs2_idx_i];
+    
 endmodule

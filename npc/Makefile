@@ -16,8 +16,8 @@ LDFLAGS			+= -ldl -lSDL2# 									# -ldl for dynamic link(nemu difftest).
 
 # 3.run info: 
 LOG ?= $(NPC_HOME)/obj_dir/log.txt
-IMG ?= ../am-kernels/tests/cpu-tests/build/dummy-riscv64-npc.bin#	# program img, run on npc.
-DIFFTEST := ${NEMU_HOME}/build/riscv64-nemu-interpreter-so#			# nemu img, use for difftest.
+IMG ?= ../am-kernels/tests/cpu-tests/build/dummy-riscv32-npc.bin#	# program img, run on npc.
+DIFFTEST := ${NEMU_HOME}/build/riscv32-nemu-interpreter-so#			# nemu img, use for difftest.
 OBJ_DIR := ./obj_dir# 												# npc obj path.
 BIN := ${OBJ_DIR}/V${TOP_MODULE}#									# npc obj bin.
 RUN_FLAGS := --img=${IMG} --diff=${DIFFTEST} --log=${LOG}#			# npc main args.
@@ -30,7 +30,8 @@ build:${CSRC} ${VSRC}
 
 run:build
 	# $(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-	@${NPC_EXEC}
+	# @${NPC_EXEC}
+	${OBJ_DIR}/Vtop
 
 gdb:build ${DIFFTEST}
 	# $(call git_commit, "gdb RTL") # DO NOT REMOVE THIS LINE!!!
