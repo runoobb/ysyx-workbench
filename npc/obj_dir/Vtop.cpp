@@ -14,12 +14,12 @@ Vtop::Vtop(VerilatedContext* _vcontextp__, const char* _vcname__)
     , vlSymsp{new Vtop__Syms(contextp(), _vcname__, this)}
     , inst_i{vlSymsp->TOP.inst_i}
     , rst{vlSymsp->TOP.rst}
-    , data_we_o{vlSymsp->TOP.data_we_o}
-    , mem_to_reg_o{vlSymsp->TOP.mem_to_reg_o}
-    , inst_addr_o{vlSymsp->TOP.inst_addr_o}
     , data_i{vlSymsp->TOP.data_i}
     , data_addr_o{vlSymsp->TOP.data_addr_o}
     , data_o{vlSymsp->TOP.data_o}
+    , data_we_o{vlSymsp->TOP.data_we_o}
+    , mem_to_reg_o{vlSymsp->TOP.mem_to_reg_o}
+    , inst_addr_o{vlSymsp->TOP.inst_addr_o}
     , clk{vlSymsp->TOP.clk}
     , inst_ce_o{vlSymsp->TOP.inst_ce_o}
     , data_ce_o{vlSymsp->TOP.data_ce_o}

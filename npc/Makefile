@@ -11,16 +11,16 @@ VERILATOR_FLAGS += --trace-fst --cc --exe --build --threads 2 -j 8
 VERILATOR_FLAGS += -Wno-fatal		# only print lint warning, but not terminate compile.
 VERILATOR_FLAGS += -Wno-UNUSED 		# close <unused> warning.
 INC_PATH   		?= $(NPC_HOME)/csrc/include
-CFLAGS			+= -g -I${INC_PATH}#								# -g for gdb
-LDFLAGS			+= -ldl -lSDL2# 									# -ldl for dynamic link(nemu difftest).
+CFLAGS			+= -fsanitize=address -g -I${INC_PATH}#								# -g for gdb
+LDFLAGS			+= -fsanitize=address -ldl -lSDL2# 									# -ldl for dynamic link(nemu difftest).
 
 # 3.run info: 
-LOG ?= $(NPC_HOME)/obj_dir/log.txt
-IMG ?= ../am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin#	# program img, run on npc.
+LOG ?= $(NPC_HOME)/obj_dir/npc-log.txt
+IMG ?= ../am-kernels/tests/cpu-tests/build/fib-riscv32-nemu.bin#	# program img, run on npc.
 DIFFTEST := ${NEMU_HOME}/build/riscv32-nemu-interpreter-so#			# nemu img, use for difftest.
 OBJ_DIR := ./obj_dir# 												# npc obj path.
 BIN := ${OBJ_DIR}/V${TOP_MODULE}#									# npc obj bin.
-RUN_FLAGS := --img=${IMG} --diff=${DIFFTEST} --log=${LOG}#			# npc main args.
+RUN_FLAGS := --diff=${DIFFTEST} --log=${LOG} ${IMG}					# npc main args.
 NPC_EXEC := ${BIN} ${RUN_FLAGS}#									# npc bin + args.
 
 .PHONY:run gdb wave clean
@@ -30,8 +30,7 @@ build:${CSRC} ${VSRC}
 
 run:build
 #	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-#	@${NPC_EXEC}
-	${OBJ_DIR}/Vtop ${IMG}
+	${NPC_EXEC}
 
 gdb:build ${DIFFTEST}
 	# $(call git_commit, "gdb RTL") # DO NOT REMOVE THIS LINE!!!

@@ -8,7 +8,8 @@ module riscv_regfile(
 	input				rd_we_i,
 	input		[`RegBus]	rd_val_i,
 	output		[`RegBus]	rs1_val_o,
-	output		[`RegBus]	rs2_val_o
+	output		[`RegBus]	rs2_val_o,
+    output      [`RegBus]   regfile_o   [31:0]
 );
     reg [`RegBus] regfile [31:0]; // Register array
 
@@ -24,6 +25,9 @@ module riscv_regfile(
                         regfile[i] <= 0;
                     end
                 end
+
+                assign regfile_o[i] = regfile[i];
+
             end else begin
                 always@(posedge clk or posedge rst) begin
                     if (rst) begin
@@ -32,6 +36,9 @@ module riscv_regfile(
                         regfile[i] <= rd_val_i; // Write value to register
                     end
                 end
+
+                assign regfile_o[i] = regfile[i];
+
             end 
         end
     endgenerate

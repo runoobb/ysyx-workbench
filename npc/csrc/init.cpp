@@ -11,6 +11,8 @@ char* img_file = NULL;
 char* log_file = NULL;
 static char *diff_so_file = NULL;
 
+void init_log(const char* log_file);
+
 static int parse_args(int argc, char *argv[]);
 static long load_img(char *img_file);
 
@@ -53,7 +55,15 @@ void npc_init(int argc, char** argv){
 //     printf("inst: %x, %x, %x, %x\n", inst_mem[0], inst_mem[1], inst_mem[2], inst_mem[3]);
 //     printf("data: %x, %x, %x, %x\n", data_mem[0], data_mem[1], data_mem[2], data_mem[3]);
   parse_args(argc, argv);
+
+  init_log(log_file);
+
   long img_size = load_img(img_file);
+
+#ifdef  DIFFTEST_ON
+  // Initialize differential testing.
+  difftest_init(diff_so_file, img_size);
+#endif
 }
 
 static long load_img(char* img_file) {
@@ -68,11 +78,13 @@ static long load_img(char* img_file) {
   fseek(fp, 0, SEEK_END);
   long size = ftell(fp);
 
-//   Log("The image is %s, size = %ld", img_file, size);
+  Log("The image is %s, size = %ld", img_file, size);
 
   fseek(fp, 0, SEEK_SET);
   int ret = fread(guest_to_host(RESET_VECTOR), size, 1, fp);
   assert(ret == 1);
+
+  printf("fib debugger: %x, %x, %x, %x\n", host_read(guest_to_host(0x80000184), 4), host_read(guest_to_host(0x80000178), 4), host_read(guest_to_host(0x8000017c), 4), host_read(guest_to_host(0x80000180), 4));
 
   fclose(fp);
   return size;

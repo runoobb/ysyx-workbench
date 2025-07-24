@@ -35,12 +35,14 @@ VM_PREFIX = Vtop
 VM_MODPREFIX = Vtop
 # User CFLAGS (from -CFLAGS on Verilator command line)
 VM_USER_CFLAGS = \
+	-fsanitize=address \
 	-g \
 	-I/home/ykwang/Templates/ysyx-workbench/npc/csrc/include \
 
 # User LDLIBS (from -LDFLAGS on Verilator command line)
 VM_USER_LDLIBS = \
 	-lz \
+	-fsanitize=address \
 	-ldl \
 	-lSDL2 \
 
@@ -49,13 +51,15 @@ VM_USER_CLASSES = \
 	map \
 	mmio \
 	port-io \
+	difftest \
 	dpic \
 	init \
 	paddr \
 	vaddr \
+	reg \
 	sim_main \
+	log \
 	timer \
-	utils \
 
 # User .cpp directories (from .cpp's on Verilator command line)
 VM_USER_DIR = \
@@ -80,6 +84,8 @@ mmio.o: /home/ykwang/Templates/ysyx-workbench/npc/csrc/device/io/mmio.cpp
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
 port-io.o: /home/ykwang/Templates/ysyx-workbench/npc/csrc/device/io/port-io.cpp
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
+difftest.o: /home/ykwang/Templates/ysyx-workbench/npc/csrc/difftest.cpp
+	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
 dpic.o: /home/ykwang/Templates/ysyx-workbench/npc/csrc/dpic.cpp
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
 init.o: /home/ykwang/Templates/ysyx-workbench/npc/csrc/init.cpp
@@ -88,11 +94,13 @@ paddr.o: /home/ykwang/Templates/ysyx-workbench/npc/csrc/memory/paddr.cpp
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
 vaddr.o: /home/ykwang/Templates/ysyx-workbench/npc/csrc/memory/vaddr.cpp
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
+reg.o: /home/ykwang/Templates/ysyx-workbench/npc/csrc/reg.cpp
+	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
 sim_main.o: /home/ykwang/Templates/ysyx-workbench/npc/csrc/sim_main.cpp
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
-timer.o: /home/ykwang/Templates/ysyx-workbench/npc/csrc/utils/timer.cpp
+log.o: /home/ykwang/Templates/ysyx-workbench/npc/csrc/utils/log.cpp
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
-utils.o: /home/ykwang/Templates/ysyx-workbench/npc/csrc/utils/utils.cpp
+timer.o: /home/ykwang/Templates/ysyx-workbench/npc/csrc/utils/timer.cpp
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
 
 ### Link rules... (from --exe)

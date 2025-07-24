@@ -12,11 +12,12 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf);
 
 Vtop___024root::Vtop___024root(Vtop__Syms* symsp, const char* v__name)
     : VerilatedModule{v__name}
-    , __Vm_mtaskstate_10(1U)
-    , __Vm_mtaskstate_6(1U)
-    , __Vm_mtaskstate_7(1U)
-    , __Vm_mtaskstate_9(1U)
+    , __Vm_mtaskstate_10(2U)
     , __Vm_mtaskstate_11(1U)
+    , __Vm_mtaskstate_7(1U)
+    , __Vm_mtaskstate_5(1U)
+    , __Vm_mtaskstate_1(1U)
+    , __Vm_mtaskstate_12(1U)
     , __Vm_mtaskstate_final__nba(2U)
     , vlSymsp{symsp}
  {

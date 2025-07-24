@@ -1,5 +1,3 @@
-// AXI Ref: https://foxsen.github.io/archbase/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF.html#%E6%80%BB%E7%BA%BF%E6%A6%82%E8%BF%B0
-
 #include "Vtop__Dpi.h"
 #include "include/include.h"
 #include "verilated.h"
@@ -21,7 +19,7 @@ bool diff_commit  = false;
 bool system_exit  = false;
 int  good_trap    = false;
 
-regfile dut_reg;
+extern regfile dut_reg;
 
 #ifdef DUMPWAVE_ON
 void dump_wave(VerilatedContext* contextp,VerilatedFstC* fstp, Vtop* top);
@@ -60,6 +58,10 @@ int main(int argc, char** argv, char** env){
     top->rst = 0;
     //
     npc_init(argc, argv);
+#ifdef DIFFTEST_ON
+    bool diff_skip_r;
+#endif
+
     // sim cycle nums
     int cycles = 0;
     // simulation loop 
@@ -74,8 +76,34 @@ int main(int argc, char** argv, char** env){
             printf("cycle: %d\n", cycles);
             data_mem_read(top->data_ce_o, top->data_we_o, top->mem_to_reg_o, top->data_addr_o, &(top->data_i));
             data_mem_write(top->data_ce_o, top->data_we_o, top->data_addr_o, &(top->data_o));
+#ifdef DIFFTEST_ON
+          // // 1. check last cycle reg status:
+          // if(!diff_skip){ //skip write or read device ins.
+          //   diff_cpdutreg2ref();
+          // }
+          // else{
+          //   if(!difftest_check()){
+          //     print_regs();
+          //     break;
+          //   }
+          // }
+          // // 2. nemu step and update nemu regs/mem:
+          // if(!diff_skip){
+          //   difftest_step();
+          // }
+          // diff_skip_r = diff_skip;
+#endif        
         }
-        top->eval();    
+        top->eval();
+#ifdef DIFFTEST_ON
+        if(top->clk){
+          difftest_step();
+          if(!difftest_check()){
+            print_regs();
+            break;
+          }
+        }
+#endif    
         cycles++;
         #ifdef DUMPWAVE_ON
         dump_wave(contextp, fstp, top);
@@ -104,12 +132,15 @@ void dump_wave(VerilatedContext* contextp,VerilatedFstC* fstp,Vtop* top)
 }
 #endif
 
+// TODO: replace with CData, SData, IData, QData
+
 // data_mem_read(top->data_ce_o, top->data_we_o, top->mem_to_reg_o, top->data_addr_o, &(top->data_i));
 void data_mem_read(bool ce, bool we, bool valid, uint32_t data_addr, uint32_t* data_i){
-  if(ce & !we & valid) *data_i = vaddr_read(data_addr, 4);
+  if(ce & !we & valid) *data_i = (IData)vaddr_read(data_addr, 4);
+  if(ce & !we & valid) printf("fib debugger: 0x%08x\n", vaddr_read(data_addr, 4));
 }
 
-// data_mem_write(top->data_ce_o, top->data_we_o, top->data_addr_o)
+// data_mem_write(top->data_ce_o, top->data_we_o, top->data_addr_o, &(top->data_o))
 void data_mem_write(bool ce, bool we, uint32_t data_addr, uint32_t* data_o){
   if(ce & we){
     vaddr_write(data_addr, 4, *data_o);

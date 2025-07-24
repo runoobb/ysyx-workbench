@@ -16,8 +16,10 @@ extern "C" {
 
 
     // DPI IMPORTS
-    // DPI import at /home/ykwang/Templates/ysyx-workbench/npc/vsrc/top.v:128:30
-    extern void get_dut_regs(const svLogicVecVal* dut_pc, const svLogicVecVal* dut_x0, const svLogicVecVal* dut_x1, const svLogicVecVal* dut_x2, const svLogicVecVal* dut_x3, const svLogicVecVal* dut_x4, const svLogicVecVal* dut_x5, const svLogicVecVal* dut_x6, const svLogicVecVal* dut_x7, const svLogicVecVal* dut_x8, const svLogicVecVal* dut_x9, const svLogicVecVal* dut_x10, const svLogicVecVal* dut_x11, const svLogicVecVal* dut_x12, const svLogicVecVal* dut_x13, const svLogicVecVal* dut_x14, const svLogicVecVal* dut_x15, const svLogicVecVal* dut_x16, const svLogicVecVal* dut_x17, const svLogicVecVal* dut_x18, const svLogicVecVal* dut_x19, const svLogicVecVal* dut_x20, const svLogicVecVal* dut_x21, const svLogicVecVal* dut_x22, const svLogicVecVal* dut_x23, const svLogicVecVal* dut_x24, const svLogicVecVal* dut_x25, const svLogicVecVal* dut_x26, const svLogicVecVal* dut_x27, const svLogicVecVal* dut_x28, const svLogicVecVal* dut_x29, const svLogicVecVal* dut_x30, const svLogicVecVal* dut_x31);
+    // DPI import at /home/ykwang/Templates/ysyx-workbench/npc/vsrc/top.v:162:32
+    extern void get_diff_skip(svBit skip);
+    // DPI import at /home/ykwang/Templates/ysyx-workbench/npc/vsrc/top.v:133:30
+    extern void get_dut_regs(int dut_pc, int dut_x0, int dut_x1, int dut_x2, int dut_x3, int dut_x4, int dut_x5, int dut_x6, int dut_x7, int dut_x8, int dut_x9, int dut_x10, int dut_x11, int dut_x12, int dut_x13, int dut_x14, int dut_x15, int dut_x16, int dut_x17, int dut_x18, int dut_x19, int dut_x20, int dut_x21, int dut_x22, int dut_x23, int dut_x24, int dut_x25, int dut_x26, int dut_x27, int dut_x28, int dut_x29, int dut_x30, int dut_x31);
 
 #ifdef __cplusplus
 }

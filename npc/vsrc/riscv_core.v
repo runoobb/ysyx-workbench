@@ -129,12 +129,11 @@ assign data_we_o = mem_wr;
 
 // DPI-C
 // CANNOT pass signals inside sub-module to dpic function, only the signals inside the same module
-// PARAMETER TYPE: int instead of integer
 import "DPI-C" function void get_dut_regs(
-	input int dut_pc, input int dut_x0, input int dut_x1, input int dut_x2, input int dut_x3, input int dut_x4, input int dut_x5,
-    input int dut_x6, input int dut_x7, input int dut_x8, input int dut_x9, input int dut_x10, input int dut_x11, input int dut_x12,input int dut_x13, input int dut_x14, 
-    input int dut_x15, input int dut_x16, input int dut_x17, input int dut_x18, input int dut_x19, input int dut_x20, input int dut_x21, input int dut_x22, input int dut_x23,
-    input int dut_x24, input int dut_x25, input int dut_x26, input int dut_x27, input int dut_x28, input int dut_x29, input int dut_x30, input int dut_x31
+	input integer dut_pc, input integer dut_x0, input integer dut_x1, input integer dut_x2, input integer dut_x3, input integer dut_x4, input integer dut_x5,
+    input integer dut_x6, input integer dut_x7, input integer dut_x8, input integer dut_x9, input integer dut_x10, input integer dut_x11, input integer dut_x12,input integer dut_x13, input integer dut_x14, 
+    input integer dut_x15, input integer dut_x16, input integer dut_x17, input integer dut_x18, input integer dut_x19, input integer dut_x20, input integer dut_x21, input integer dut_x22, input integer dut_x23,
+    input integer dut_x24, input integer dut_x25, input integer dut_x26, input integer dut_x27, input integer dut_x28, input integer dut_x29, input integer dut_x30, input integer dut_x31
 );
 
 always@(*) begin
@@ -156,18 +155,5 @@ always@(*) begin
 	w_regs[30], w_regs[31]
 	);
 end
-
-
-//   import "DPI-C" function void check_rst(input bit rst_flag);
-  import "DPI-C" function void get_diff_skip(input bit skip);
-//   import "DPI-C" function void get_diff_commit(input bit commit);
-//   import "DPI-C" function void check_finsih(input int ins,input bit a0zero);
-//   wire real_commit = wbu_commit & !wbu_nop;
-  always @(*) begin
-    // check_rst(i_rst_n);
-    get_diff_skip(1'b0);
-    // get_diff_commit(real_commit);
-    // check_finsih(s_wbu_ins,s_a0zero);
-  end
 
 endmodule

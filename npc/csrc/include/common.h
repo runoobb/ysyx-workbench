@@ -64,7 +64,7 @@ typedef uint16_t ioaddr_t;
 #define CONFIG_SERIAL_MMIO 0xa00003f8
 #define CONFIG_RT_CHECK 1
 #define CONFIG_I8042_DATA_MMIO 0xa0000060
-#define CONFIG_ITRACE_COND "true"
+#define CONFIG_ITRACE 1
 #define CONFIG_SB_SIZE 0x10000
 #define CONFIG_CC "gcc"
 #define CONFIG_DIFFTEST_REF_PATH "none"
