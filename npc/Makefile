@@ -1,7 +1,7 @@
 # 1.files info:
 CSRC +=  $(shell find $(abspath ./csrc) -name "*.cpp")
 VSRC +=  $(shell find $(abspath ./vsrc) -name "*.v" -or -name "*.sv")
-TOP_MODULE := top
+TOP_MODULE := riscv_core
 SEARCHPATH := $(NPC_HOME)/vsrc
 
 # 2.verilator flags:
@@ -10,6 +10,7 @@ VERILATOR_FLAGS += --top ${TOP_MODULE}
 VERILATOR_FLAGS += --trace-fst --cc --exe --build --threads 2 -j 8
 VERILATOR_FLAGS += -Wno-fatal		# only print lint warning, but not terminate compile.
 VERILATOR_FLAGS += -Wno-UNUSED 		# close <unused> warning.
+VERILATOR_FLAGS += -sv
 INC_PATH   		?= $(NPC_HOME)/csrc/include
 CFLAGS			+= -fsanitize=address -g -I${INC_PATH}#								# -g for gdb
 LDFLAGS			+= -fsanitize=address -ldl -lSDL2# 									# -ldl for dynamic link(nemu difftest).

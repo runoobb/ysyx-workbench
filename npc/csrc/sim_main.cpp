@@ -1,4 +1,4 @@
-#include "Vtop__Dpi.h"
+#include "Vriscv_core__Dpi.h"
 #include "include/include.h"
 #include "verilated.h"
 #include "verilated_fst_c.h"
@@ -22,7 +22,7 @@ int  good_trap    = false;
 extern regfile dut_reg;
 
 #ifdef DUMPWAVE_ON
-void dump_wave(VerilatedContext* contextp,VerilatedFstC* fstp, Vtop* top);
+void dump_wave(VerilatedContext* contextp,VerilatedFstC* fstp, Vriscv_core* top);
 #endif
 
 // data_mem_read(top->data_ce_o, top->data_we_o, top->data_addr_o, &(top->data_i));
@@ -39,7 +39,7 @@ int main(int argc, char** argv, char** env){
     // global settings during simulation
     VerilatedContext* contextp = new VerilatedContext;
     contextp->commandArgs(argc, argv);
-    Vtop* top = new Vtop{contextp};
+    Vriscv_core* top = new Vriscv_core{contextp};
 
     #ifdef DUMPWAVE_ON
         VerilatedFstC *fstp = new VerilatedFstC;
@@ -58,6 +58,7 @@ int main(int argc, char** argv, char** env){
     top->rst = 0;
     //
     npc_init(argc, argv);
+
 #ifdef DIFFTEST_ON
     bool diff_skip_r;
 #endif
@@ -125,7 +126,7 @@ int main(int argc, char** argv, char** env){
 
 
 #ifdef DUMPWAVE_ON
-void dump_wave(VerilatedContext* contextp,VerilatedFstC* fstp,Vtop* top)
+void dump_wave(VerilatedContext* contextp,VerilatedFstC* fstp,Vriscv_core* top)
 {
   contextp->timeInc(1);
   fstp->dump(contextp->time());

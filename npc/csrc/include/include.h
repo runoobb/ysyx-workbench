@@ -2,7 +2,7 @@
 #ifndef _INCLUDE_H_
 #define _INCLUDE_H_
 
-#include "Vtop.h"
+#include "Vriscv_core.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
