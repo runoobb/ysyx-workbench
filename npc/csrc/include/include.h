@@ -10,10 +10,13 @@
 #include <cstdint>
 #include <cmath>
 
+#include "interface/isram_interface.hpp"
+#include "interface/dsram_interface.hpp"
+
 #define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
 
 #define DUMPWAVE_ON 1
-#define DIFFTEST_ON 1
+// #define DIFFTEST_ON 1
 
 #define MAX_CYCLES 100000
 #define EBREAK 1048691

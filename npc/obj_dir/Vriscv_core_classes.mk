@@ -29,7 +29,6 @@ VM_CLASSES_FAST += \
 
 # Generated module classes, non-fast-path, compile with low/medium optimization
 VM_CLASSES_SLOW += \
-	Vriscv_core__ConstPool_0 \
 	Vriscv_core___024root__Slow \
 	Vriscv_core___024root__DepSet_h4caaa43f__0__Slow \
 	Vriscv_core___024root__DepSet_ha76009e6__0__Slow \

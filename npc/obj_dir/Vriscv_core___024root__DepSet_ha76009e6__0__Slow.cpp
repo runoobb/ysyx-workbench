@@ -92,729 +92,667 @@ VL_ATTR_COLD void Vriscv_core___024root___dump_triggers__stl(Vriscv_core___024ro
 #endif  // VL_DEBUG
 
 void Vriscv_core___024root____Vdpiimwrap_riscv_core__DOT__get_dut_regs_TOP(IData/*31:0*/ dut_pc, IData/*31:0*/ dut_x0, IData/*31:0*/ dut_x1, IData/*31:0*/ dut_x2, IData/*31:0*/ dut_x3, IData/*31:0*/ dut_x4, IData/*31:0*/ dut_x5, IData/*31:0*/ dut_x6, IData/*31:0*/ dut_x7, IData/*31:0*/ dut_x8, IData/*31:0*/ dut_x9, IData/*31:0*/ dut_x10, IData/*31:0*/ dut_x11, IData/*31:0*/ dut_x12, IData/*31:0*/ dut_x13, IData/*31:0*/ dut_x14, IData/*31:0*/ dut_x15, IData/*31:0*/ dut_x16, IData/*31:0*/ dut_x17, IData/*31:0*/ dut_x18, IData/*31:0*/ dut_x19, IData/*31:0*/ dut_x20, IData/*31:0*/ dut_x21, IData/*31:0*/ dut_x22, IData/*31:0*/ dut_x23, IData/*31:0*/ dut_x24, IData/*31:0*/ dut_x25, IData/*31:0*/ dut_x26, IData/*31:0*/ dut_x27, IData/*31:0*/ dut_x28, IData/*31:0*/ dut_x29, IData/*31:0*/ dut_x30, IData/*31:0*/ dut_x31);
-extern const VlUnpacked<CData/*0:0*/, 32> Vriscv_core__ConstPool__TABLE_hd160473a_0;
-extern const VlUnpacked<CData/*0:0*/, 32> Vriscv_core__ConstPool__TABLE_hca1c778d_0;
 
 VL_ATTR_COLD void Vriscv_core___024root___stl_sequent__TOP__0(Vriscv_core___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vriscv_core__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vriscv_core___024root___stl_sequent__TOP__0\n"); );
     // Body
-    vlSelf->riscv_core__DOT__reg_wr = ((0x33U == (0xfe00707fU 
-                                                  & vlSelf->inst_i)) 
-                                       | ((0x40000033U 
-                                           == (0xfe00707fU 
-                                               & vlSelf->inst_i)) 
-                                          | ((0x4033U 
-                                              == (0xfe00707fU 
-                                                  & vlSelf->inst_i)) 
-                                             | ((0x6033U 
+    if ((0x33U == (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 0U;
+    } else if ((0x40000033U == (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 8U;
+    } else if ((0x4033U == (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 4U;
+    } else if ((0x6033U == (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 6U;
+    } else if ((0x7033U == (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 7U;
+    } else if ((0x1033U == (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 1U;
+    } else if ((0x5033U == (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 5U;
+    } else if ((0x40005033U == (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 0xdU;
+    } else if ((0x2033U == (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 2U;
+    } else if ((0x3033U == (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 0xaU;
+    } else if ((0x13U == (0x707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 1U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 0U;
+    } else if ((0x4013U == (0x707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 1U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 4U;
+    } else if ((0x6013U == (0x707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 1U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 6U;
+    } else if ((0x7013U == (0x707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 1U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 7U;
+    } else if ((0x1013U == (0xfc00707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 1U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 1U;
+    } else if ((0x5013U == (0xfc00707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 1U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 5U;
+    } else if ((0x40005013U == (0xfc00707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 1U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 0xdU;
+    } else if ((0x2013U == (0x707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 1U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 2U;
+    } else if ((0x3013U == (0x707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 7U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 1U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 0xaU;
+    } else if ((3U == (0x707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 1U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 0U;
+    } else if ((0x1003U == (0x707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 1U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 1U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 0U;
+    } else if ((0x2003U == (0x707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 2U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 1U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 0U;
+    } else if ((0x4003U == (0x707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 4U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 1U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 0U;
+    } else if ((0x5003U == (0x707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 5U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 1U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 0U;
+    } else if ((0x23U == (0x707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 2U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 1U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 0U;
+    } else if ((0x1023U == (0x707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 2U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 1U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 1U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 0U;
+    } else if ((0x2023U == (0x707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 2U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 2U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 1U;
+        vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 0U;
+    } else {
+        if ((0x63U == (0x707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+            vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 3U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 4U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 0U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 2U;
+        } else if ((0x1063U == (0x707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+            vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 3U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 5U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 0U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 2U;
+        } else if ((0x4063U == (0x707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+            vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 3U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 6U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 0U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 2U;
+        } else if ((0x5063U == (0x707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+            vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 3U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 7U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 0U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 2U;
+        } else if ((0x6063U == (0x707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+            vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 3U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 6U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 0U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 0xaU;
+        } else if ((0x7063U == (0x707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+            vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 3U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 7U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 0U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 0xaU;
+        } else if ((0x6fU == (0x7fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+            vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 4U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 1U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 2U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 0U;
+        } else if ((0x67U == (0x707fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+            vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 2U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 2U;
+            vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 0U;
+        } else {
+            if ((0x37U == (0x7fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+                vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 1U;
+                vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 1U;
+                vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 3U;
+            } else {
+                if ((0x17U == (0x7fU & vlSelf->riscv_core__DOT__inst_if_id_o))) {
+                    vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 1U;
+                    vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 1U;
+                } else {
+                    vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
+                    vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = 0U;
+                }
+                vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = 0U;
+            }
+            vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = 0U;
+        }
+        vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = 7U;
+    }
+    vlSelf->riscv_core__DOT__u0_idu__DOT__regwr_w = 
+        ((0x33U == (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+         | ((0x40000033U == (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+            | ((0x4033U == (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+               | ((0x6033U == (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                  | ((0x7033U == (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                     | ((0x1033U == (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                        | ((0x5033U == (0xfe00707fU 
+                                        & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                           | ((0x40005033U == (0xfe00707fU 
+                                               & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                              | ((0x2033U == (0xfe00707fU 
+                                              & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                 | ((0x3033U == (0xfe00707fU 
+                                                 & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                    | ((0x13U == (0x707fU 
+                                                  & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                       | ((0x4013U 
+                                           == (0x707fU 
+                                               & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                          | ((0x6013U 
+                                              == (0x707fU 
+                                                  & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                             | ((0x7013U 
                                                  == 
-                                                 (0xfe00707fU 
-                                                  & vlSelf->inst_i)) 
-                                                | ((0x7033U 
+                                                 (0x707fU 
+                                                  & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                | ((0x1013U 
                                                     == 
-                                                    (0xfe00707fU 
-                                                     & vlSelf->inst_i)) 
-                                                   | ((0x1033U 
+                                                    (0xfc00707fU 
+                                                     & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                   | ((0x5013U 
                                                        == 
-                                                       (0xfe00707fU 
-                                                        & vlSelf->inst_i)) 
-                                                      | ((0x5033U 
+                                                       (0xfc00707fU 
+                                                        & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                      | ((0x40005013U 
                                                           == 
-                                                          (0xfe00707fU 
-                                                           & vlSelf->inst_i)) 
-                                                         | ((0x40005033U 
+                                                          (0xfc00707fU 
+                                                           & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                         | ((0x2013U 
                                                              == 
-                                                             (0xfe00707fU 
-                                                              & vlSelf->inst_i)) 
-                                                            | ((0x2033U 
+                                                             (0x707fU 
+                                                              & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                            | ((0x3013U 
                                                                 == 
-                                                                (0xfe00707fU 
-                                                                 & vlSelf->inst_i)) 
-                                                               | ((0x3033U 
+                                                                (0x707fU 
+                                                                 & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                               | ((3U 
                                                                    == 
-                                                                   (0xfe00707fU 
-                                                                    & vlSelf->inst_i)) 
-                                                                  | ((0x13U 
+                                                                   (0x707fU 
+                                                                    & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                                  | ((0x1003U 
                                                                       == 
                                                                       (0x707fU 
-                                                                       & vlSelf->inst_i)) 
-                                                                     | ((0x4013U 
+                                                                       & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                                     | ((0x2003U 
                                                                          == 
                                                                          (0x707fU 
-                                                                          & vlSelf->inst_i)) 
-                                                                        | ((0x6013U 
+                                                                          & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                                        | ((0x4003U 
                                                                             == 
                                                                             (0x707fU 
-                                                                             & vlSelf->inst_i)) 
-                                                                           | ((0x7013U 
+                                                                             & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                                           | ((0x5003U 
                                                                                == 
                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                              | ((0x1013U 
-                                                                                == 
-                                                                                (0xfc00707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                | ((0x5013U 
-                                                                                == 
-                                                                                (0xfc00707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                | ((0x40005013U 
-                                                                                == 
-                                                                                (0xfc00707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                | ((0x2013U 
-                                                                                == 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                | ((0x3013U 
-                                                                                == 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                | ((3U 
-                                                                                == 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                | ((0x1003U 
-                                                                                == 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                | ((0x2003U 
-                                                                                == 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                | ((0x4003U 
-                                                                                == 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                | ((0x5003U 
-                                                                                == 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                | ((0x23U 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                                              | ((0x23U 
                                                                                 != 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 & ((0x1023U 
                                                                                 != 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 & ((0x2023U 
                                                                                 != 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 & ((0x63U 
                                                                                 != 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 & ((0x1063U 
                                                                                 != 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 & ((0x4063U 
                                                                                 != 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 & ((0x5063U 
                                                                                 != 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 & ((0x6063U 
                                                                                 != 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 & ((0x7063U 
                                                                                 != 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 & ((0x6fU 
                                                                                 == 
                                                                                 (0x7fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 | ((0x67U 
                                                                                 == 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 | ((0x37U 
                                                                                 == 
                                                                                 (0x7fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 | (0x17U 
                                                                                 == 
                                                                                 (0x7fU 
-                                                                                & vlSelf->inst_i))))))))))))))))))))))))))))))))))))));
-    if ((0x33U == (0xfe00707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 7U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 0U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 0U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
-    } else if ((0x40000033U == (0xfe00707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 7U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 8U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 0U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
-    } else if ((0x4033U == (0xfe00707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 7U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 4U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 0U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
-    } else if ((0x6033U == (0xfe00707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 7U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 6U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 0U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
-    } else if ((0x7033U == (0xfe00707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 7U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 7U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 0U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
-    } else if ((0x1033U == (0xfe00707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 7U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 1U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 0U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
-    } else if ((0x5033U == (0xfe00707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 7U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 5U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 0U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
-    } else if ((0x40005033U == (0xfe00707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 7U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 0xdU;
-        vlSelf->riscv_core__DOT__alu_bsrc = 0U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
-    } else if ((0x2033U == (0xfe00707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 7U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 2U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 0U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
-    } else if ((0x3033U == (0xfe00707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 7U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 0xaU;
-        vlSelf->riscv_core__DOT__alu_bsrc = 0U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
-    } else if ((0x13U == (0x707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 7U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 0U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 1U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
-    } else if ((0x4013U == (0x707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 7U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 4U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 1U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
-    } else if ((0x6013U == (0x707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 7U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 6U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 1U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
-    } else if ((0x7013U == (0x707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 7U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 7U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 1U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
-    } else if ((0x1013U == (0xfc00707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 7U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 1U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 1U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
-    } else if ((0x5013U == (0xfc00707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 7U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 5U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 1U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
-    } else if ((0x40005013U == (0xfc00707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 7U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 0xdU;
-        vlSelf->riscv_core__DOT__alu_bsrc = 1U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
-    } else if ((0x2013U == (0x707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 7U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 2U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 1U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
-    } else if ((0x3013U == (0x707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 7U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 0xaU;
-        vlSelf->riscv_core__DOT__alu_bsrc = 1U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
-    } else if ((3U == (0x707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 0U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 0U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 1U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
-    } else if ((0x1003U == (0x707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 1U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 0U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 1U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
-    } else if ((0x2003U == (0x707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 2U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 0U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 1U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
-    } else if ((0x4003U == (0x707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 4U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 0U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 1U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
-    } else if ((0x5003U == (0x707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 5U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 0U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 1U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
-    } else if ((0x23U == (0x707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 0U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 0U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 1U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 2U;
-    } else if ((0x1023U == (0x707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 1U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 0U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 1U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 2U;
-    } else if ((0x2023U == (0x707fU & vlSelf->inst_i))) {
-        vlSelf->riscv_core__DOT__mem_op = 2U;
-        vlSelf->riscv_core__DOT__branch_op = 0U;
-        vlSelf->riscv_core__DOT__alu_ctr = 0U;
-        vlSelf->riscv_core__DOT__alu_bsrc = 1U;
-        vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 2U;
-    } else {
-        vlSelf->riscv_core__DOT__mem_op = 7U;
-        if ((0x63U == (0x707fU & vlSelf->inst_i))) {
-            vlSelf->riscv_core__DOT__branch_op = 4U;
-            vlSelf->riscv_core__DOT__alu_ctr = 2U;
-            vlSelf->riscv_core__DOT__alu_bsrc = 0U;
-            vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 3U;
-        } else if ((0x1063U == (0x707fU & vlSelf->inst_i))) {
-            vlSelf->riscv_core__DOT__branch_op = 5U;
-            vlSelf->riscv_core__DOT__alu_ctr = 2U;
-            vlSelf->riscv_core__DOT__alu_bsrc = 0U;
-            vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 3U;
-        } else if ((0x4063U == (0x707fU & vlSelf->inst_i))) {
-            vlSelf->riscv_core__DOT__branch_op = 6U;
-            vlSelf->riscv_core__DOT__alu_ctr = 2U;
-            vlSelf->riscv_core__DOT__alu_bsrc = 0U;
-            vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 3U;
-        } else if ((0x5063U == (0x707fU & vlSelf->inst_i))) {
-            vlSelf->riscv_core__DOT__branch_op = 7U;
-            vlSelf->riscv_core__DOT__alu_ctr = 2U;
-            vlSelf->riscv_core__DOT__alu_bsrc = 0U;
-            vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 3U;
-        } else if ((0x6063U == (0x707fU & vlSelf->inst_i))) {
-            vlSelf->riscv_core__DOT__branch_op = 6U;
-            vlSelf->riscv_core__DOT__alu_ctr = 0xaU;
-            vlSelf->riscv_core__DOT__alu_bsrc = 0U;
-            vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 3U;
-        } else if ((0x7063U == (0x707fU & vlSelf->inst_i))) {
-            vlSelf->riscv_core__DOT__branch_op = 7U;
-            vlSelf->riscv_core__DOT__alu_ctr = 0xaU;
-            vlSelf->riscv_core__DOT__alu_bsrc = 0U;
-            vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 3U;
-        } else if ((0x6fU == (0x7fU & vlSelf->inst_i))) {
-            vlSelf->riscv_core__DOT__branch_op = 1U;
-            vlSelf->riscv_core__DOT__alu_ctr = 0U;
-            vlSelf->riscv_core__DOT__alu_bsrc = 2U;
-            vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 4U;
-        } else if ((0x67U == (0x707fU & vlSelf->inst_i))) {
-            vlSelf->riscv_core__DOT__branch_op = 2U;
-            vlSelf->riscv_core__DOT__alu_ctr = 0U;
-            vlSelf->riscv_core__DOT__alu_bsrc = 2U;
-            vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 0U;
-        } else {
-            vlSelf->riscv_core__DOT__branch_op = 0U;
-            if ((0x37U == (0x7fU & vlSelf->inst_i))) {
-                vlSelf->riscv_core__DOT__alu_ctr = 3U;
-                vlSelf->riscv_core__DOT__alu_bsrc = 1U;
-                vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 1U;
-            } else {
-                vlSelf->riscv_core__DOT__alu_ctr = 0U;
-                if ((0x17U == (0x7fU & vlSelf->inst_i))) {
-                    vlSelf->riscv_core__DOT__alu_bsrc = 1U;
-                    vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 1U;
-                } else {
-                    vlSelf->riscv_core__DOT__alu_bsrc = 0U;
-                    vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = 7U;
-                }
-            }
-        }
-    }
-    vlSelf->inst_addr_o = vlSelf->riscv_core__DOT__pc;
-    vlSelf->riscv_core__DOT__mem_wr = ((0x33U != (0xfe00707fU 
-                                                  & vlSelf->inst_i)) 
-                                       & ((0x40000033U 
-                                           != (0xfe00707fU 
-                                               & vlSelf->inst_i)) 
-                                          & ((0x4033U 
-                                              != (0xfe00707fU 
-                                                  & vlSelf->inst_i)) 
-                                             & ((0x6033U 
-                                                 != 
-                                                 (0xfe00707fU 
-                                                  & vlSelf->inst_i)) 
-                                                & ((0x7033U 
-                                                    != 
-                                                    (0xfe00707fU 
-                                                     & vlSelf->inst_i)) 
-                                                   & ((0x1033U 
-                                                       != 
-                                                       (0xfe00707fU 
-                                                        & vlSelf->inst_i)) 
-                                                      & ((0x5033U 
-                                                          != 
-                                                          (0xfe00707fU 
-                                                           & vlSelf->inst_i)) 
-                                                         & ((0x40005033U 
-                                                             != 
-                                                             (0xfe00707fU 
-                                                              & vlSelf->inst_i)) 
-                                                            & ((0x2033U 
-                                                                != 
-                                                                (0xfe00707fU 
-                                                                 & vlSelf->inst_i)) 
-                                                               & ((0x3033U 
-                                                                   != 
-                                                                   (0xfe00707fU 
-                                                                    & vlSelf->inst_i)) 
-                                                                  & ((0x13U 
-                                                                      != 
-                                                                      (0x707fU 
-                                                                       & vlSelf->inst_i)) 
-                                                                     & ((0x4013U 
-                                                                         != 
-                                                                         (0x707fU 
-                                                                          & vlSelf->inst_i)) 
-                                                                        & ((0x6013U 
-                                                                            != 
-                                                                            (0x707fU 
-                                                                             & vlSelf->inst_i)) 
-                                                                           & ((0x7013U 
-                                                                               != 
-                                                                               (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                              & ((0x1013U 
-                                                                                != 
-                                                                                (0xfc00707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x5013U 
-                                                                                != 
-                                                                                (0xfc00707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x40005013U 
-                                                                                != 
-                                                                                (0xfc00707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x2013U 
-                                                                                != 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x3013U 
-                                                                                != 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((3U 
-                                                                                != 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x1003U 
-                                                                                != 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x2003U 
-                                                                                != 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x4003U 
-                                                                                != 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x5003U 
-                                                                                != 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x23U 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o))))))))))))))))))))))))))))))))))))));
+    vlSelf->riscv_core__DOT__u0_idu__DOT__memtoreg_w 
+        = ((0x33U != (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+           & ((0x40000033U != (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+              & ((0x4033U != (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                 & ((0x6033U != (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                    & ((0x7033U != (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                       & ((0x1033U != (0xfe00707fU 
+                                       & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                          & ((0x5033U != (0xfe00707fU 
+                                          & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                             & ((0x40005033U != (0xfe00707fU 
+                                                 & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                & ((0x2033U != (0xfe00707fU 
+                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                   & ((0x3033U != (0xfe00707fU 
+                                                   & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                      & ((0x13U != 
+                                          (0x707fU 
+                                           & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                         & ((0x4013U 
+                                             != (0x707fU 
+                                                 & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                            & ((0x6013U 
+                                                != 
+                                                (0x707fU 
+                                                 & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                               & ((0x7013U 
+                                                   != 
+                                                   (0x707fU 
+                                                    & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                  & ((0x1013U 
+                                                      != 
+                                                      (0xfc00707fU 
+                                                       & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                     & ((0x5013U 
+                                                         != 
+                                                         (0xfc00707fU 
+                                                          & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                        & ((0x40005013U 
+                                                            != 
+                                                            (0xfc00707fU 
+                                                             & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                           & ((0x2013U 
+                                                               != 
+                                                               (0x707fU 
+                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                              & ((0x3013U 
+                                                                  != 
+                                                                  (0x707fU 
+                                                                   & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                                 & ((3U 
+                                                                     == 
+                                                                     (0x707fU 
+                                                                      & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                                    | ((0x1003U 
+                                                                        == 
+                                                                        (0x707fU 
+                                                                         & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                                       | ((0x2003U 
+                                                                           == 
+                                                                           (0x707fU 
+                                                                            & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                                          | ((0x4003U 
+                                                                              == 
+                                                                              (0x707fU 
+                                                                               & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                                             | (0x5003U 
                                                                                 == 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)))))))))))))))))))))))));
+    vlSelf->riscv_core__DOT__u0_idu__DOT__memwr_w = 
+        ((0x33U != (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+         & ((0x40000033U != (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+            & ((0x4033U != (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+               & ((0x6033U != (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                  & ((0x7033U != (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                     & ((0x1033U != (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                        & ((0x5033U != (0xfe00707fU 
+                                        & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                           & ((0x40005033U != (0xfe00707fU 
+                                               & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                              & ((0x2033U != (0xfe00707fU 
+                                              & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                 & ((0x3033U != (0xfe00707fU 
+                                                 & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                    & ((0x13U != (0x707fU 
+                                                  & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                       & ((0x4013U 
+                                           != (0x707fU 
+                                               & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                          & ((0x6013U 
+                                              != (0x707fU 
+                                                  & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                             & ((0x7013U 
+                                                 != 
+                                                 (0x707fU 
+                                                  & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                & ((0x1013U 
+                                                    != 
+                                                    (0xfc00707fU 
+                                                     & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                   & ((0x5013U 
+                                                       != 
+                                                       (0xfc00707fU 
+                                                        & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                      & ((0x40005013U 
+                                                          != 
+                                                          (0xfc00707fU 
+                                                           & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                         & ((0x2013U 
+                                                             != 
+                                                             (0x707fU 
+                                                              & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                            & ((0x3013U 
+                                                                != 
+                                                                (0x707fU 
+                                                                 & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                               & ((3U 
+                                                                   != 
+                                                                   (0x707fU 
+                                                                    & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                                  & ((0x1003U 
+                                                                      != 
+                                                                      (0x707fU 
+                                                                       & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                                     & ((0x2003U 
+                                                                         != 
+                                                                         (0x707fU 
+                                                                          & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                                        & ((0x4003U 
+                                                                            != 
+                                                                            (0x707fU 
+                                                                             & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                                           & ((0x5003U 
+                                                                               != 
+                                                                               (0x707fU 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                                              & ((0x23U 
+                                                                                == 
+                                                                                (0x707fU 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 | ((0x1023U 
                                                                                 == 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 | (0x2023U 
                                                                                 == 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i))))))))))))))))))))))))))));
-    vlSelf->riscv_core__DOT__mem_to_reg = ((0x33U != 
-                                            (0xfe00707fU 
-                                             & vlSelf->inst_i)) 
-                                           & ((0x40000033U 
-                                               != (0xfe00707fU 
-                                                   & vlSelf->inst_i)) 
-                                              & ((0x4033U 
-                                                  != 
-                                                  (0xfe00707fU 
-                                                   & vlSelf->inst_i)) 
-                                                 & ((0x6033U 
-                                                     != 
-                                                     (0xfe00707fU 
-                                                      & vlSelf->inst_i)) 
-                                                    & ((0x7033U 
-                                                        != 
-                                                        (0xfe00707fU 
-                                                         & vlSelf->inst_i)) 
-                                                       & ((0x1033U 
-                                                           != 
-                                                           (0xfe00707fU 
-                                                            & vlSelf->inst_i)) 
-                                                          & ((0x5033U 
-                                                              != 
-                                                              (0xfe00707fU 
-                                                               & vlSelf->inst_i)) 
-                                                             & ((0x40005033U 
-                                                                 != 
-                                                                 (0xfe00707fU 
-                                                                  & vlSelf->inst_i)) 
-                                                                & ((0x2033U 
-                                                                    != 
-                                                                    (0xfe00707fU 
-                                                                     & vlSelf->inst_i)) 
-                                                                   & ((0x3033U 
-                                                                       != 
-                                                                       (0xfe00707fU 
-                                                                        & vlSelf->inst_i)) 
-                                                                      & ((0x13U 
-                                                                          != 
-                                                                          (0x707fU 
-                                                                           & vlSelf->inst_i)) 
-                                                                         & ((0x4013U 
-                                                                             != 
-                                                                             (0x707fU 
-                                                                              & vlSelf->inst_i)) 
-                                                                            & ((0x6013U 
-                                                                                != 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                               & ((0x7013U 
-                                                                                != 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x1013U 
-                                                                                != 
-                                                                                (0xfc00707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x5013U 
-                                                                                != 
-                                                                                (0xfc00707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x40005013U 
-                                                                                != 
-                                                                                (0xfc00707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x2013U 
-                                                                                != 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x3013U 
-                                                                                != 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((3U 
-                                                                                == 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                | ((0x1003U 
-                                                                                == 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                | ((0x2003U 
-                                                                                == 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                | ((0x4003U 
-                                                                                == 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                | (0x5003U 
-                                                                                == 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)))))))))))))))))))))))));
-    vlSelf->riscv_core__DOT__alu_asrc = ((0x33U != 
-                                          (0xfe00707fU 
-                                           & vlSelf->inst_i)) 
-                                         & ((0x40000033U 
-                                             != (0xfe00707fU 
-                                                 & vlSelf->inst_i)) 
-                                            & ((0x4033U 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o))))))))))))))))))))))))))));
+    vlSelf->riscv_core__DOT__u0_idu__DOT__alua_src_w 
+        = ((0x33U != (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+           & ((0x40000033U != (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+              & ((0x4033U != (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                 & ((0x6033U != (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                    & ((0x7033U != (0xfe00707fU & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                       & ((0x1033U != (0xfe00707fU 
+                                       & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                          & ((0x5033U != (0xfe00707fU 
+                                          & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                             & ((0x40005033U != (0xfe00707fU 
+                                                 & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                & ((0x2033U != (0xfe00707fU 
+                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                   & ((0x3033U != (0xfe00707fU 
+                                                   & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                      & ((0x13U != 
+                                          (0x707fU 
+                                           & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                         & ((0x4013U 
+                                             != (0x707fU 
+                                                 & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                            & ((0x6013U 
                                                 != 
-                                                (0xfe00707fU 
-                                                 & vlSelf->inst_i)) 
-                                               & ((0x6033U 
+                                                (0x707fU 
+                                                 & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                               & ((0x7013U 
                                                    != 
-                                                   (0xfe00707fU 
-                                                    & vlSelf->inst_i)) 
-                                                  & ((0x7033U 
+                                                   (0x707fU 
+                                                    & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                  & ((0x1013U 
                                                       != 
-                                                      (0xfe00707fU 
-                                                       & vlSelf->inst_i)) 
-                                                     & ((0x1033U 
+                                                      (0xfc00707fU 
+                                                       & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                     & ((0x5013U 
                                                          != 
-                                                         (0xfe00707fU 
-                                                          & vlSelf->inst_i)) 
-                                                        & ((0x5033U 
+                                                         (0xfc00707fU 
+                                                          & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                        & ((0x40005013U 
                                                             != 
-                                                            (0xfe00707fU 
-                                                             & vlSelf->inst_i)) 
-                                                           & ((0x40005033U 
+                                                            (0xfc00707fU 
+                                                             & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                           & ((0x2013U 
                                                                != 
-                                                               (0xfe00707fU 
-                                                                & vlSelf->inst_i)) 
-                                                              & ((0x2033U 
+                                                               (0x707fU 
+                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                              & ((0x3013U 
                                                                   != 
-                                                                  (0xfe00707fU 
-                                                                   & vlSelf->inst_i)) 
-                                                                 & ((0x3033U 
+                                                                  (0x707fU 
+                                                                   & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                                 & ((3U 
                                                                      != 
-                                                                     (0xfe00707fU 
-                                                                      & vlSelf->inst_i)) 
-                                                                    & ((0x13U 
+                                                                     (0x707fU 
+                                                                      & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                                    & ((0x1003U 
                                                                         != 
                                                                         (0x707fU 
-                                                                         & vlSelf->inst_i)) 
-                                                                       & ((0x4013U 
+                                                                         & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                                       & ((0x2003U 
                                                                            != 
                                                                            (0x707fU 
-                                                                            & vlSelf->inst_i)) 
-                                                                          & ((0x6013U 
+                                                                            & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                                          & ((0x4003U 
                                                                               != 
                                                                               (0x707fU 
-                                                                               & vlSelf->inst_i)) 
-                                                                             & ((0x7013U 
+                                                                               & vlSelf->riscv_core__DOT__inst_if_id_o)) 
+                                                                             & ((0x5003U 
                                                                                 != 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x1013U 
-                                                                                != 
-                                                                                (0xfc00707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x5013U 
-                                                                                != 
-                                                                                (0xfc00707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x40005013U 
-                                                                                != 
-                                                                                (0xfc00707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x2013U 
-                                                                                != 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x3013U 
-                                                                                != 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((3U 
-                                                                                != 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x1003U 
-                                                                                != 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x2003U 
-                                                                                != 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x4003U 
-                                                                                != 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
-                                                                                & ((0x5003U 
-                                                                                != 
-                                                                                (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 & ((0x23U 
                                                                                 != 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 & ((0x1023U 
                                                                                 != 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 & ((0x2023U 
                                                                                 != 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 & ((0x63U 
                                                                                 != 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 & ((0x1063U 
                                                                                 != 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 & ((0x4063U 
                                                                                 != 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 & ((0x5063U 
                                                                                 != 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 & ((0x6063U 
                                                                                 != 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 & ((0x7063U 
                                                                                 != 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 & ((0x6fU 
                                                                                 == 
                                                                                 (0x7fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 | ((0x67U 
                                                                                 == 
                                                                                 (0x707fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 | ((0x37U 
                                                                                 != 
                                                                                 (0x7fU 
-                                                                                & vlSelf->inst_i)) 
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o)) 
                                                                                 & (0x17U 
                                                                                 == 
                                                                                 (0x7fU 
-                                                                                & vlSelf->inst_i))))))))))))))))))))))))))))))))))))));
-    vlSelf->data_o = vlSelf->riscv_core__DOT__u0_riscv_regfile__DOT__regfile
-        [(0x1fU & (vlSelf->inst_i >> 0x14U))];
-    vlSelf->riscv_core__DOT__rs1_val = vlSelf->riscv_core__DOT__u0_riscv_regfile__DOT__regfile
-        [(0x1fU & (vlSelf->inst_i >> 0xfU))];
+                                                                                & vlSelf->riscv_core__DOT__inst_if_id_o))))))))))))))))))))))))))))))))))))));
+    vlSelf->data_we_o = vlSelf->riscv_core__DOT__mem_wr_ex_mem_o;
+    vlSelf->data_addr_o = vlSelf->riscv_core__DOT__alu_p_val_ex_mem_o;
+    vlSelf->data_o = vlSelf->riscv_core__DOT__rs2_val_ex_mem_o;
+    vlSelf->inst_addr_o = vlSelf->riscv_core__DOT__u0_ifu__DOT__pc_w;
+    vlSelf->riscv_core__DOT__branch_taken = ((0U != (IData)(vlSelf->riscv_core__DOT__branch_op_ex_mem_o)) 
+                                             & ((1U 
+                                                 == (IData)(vlSelf->riscv_core__DOT__branch_op_ex_mem_o)) 
+                                                | ((2U 
+                                                    == (IData)(vlSelf->riscv_core__DOT__branch_op_ex_mem_o)) 
+                                                   | (((4U 
+                                                        == (IData)(vlSelf->riscv_core__DOT__branch_op_ex_mem_o)) 
+                                                       & (IData)(vlSelf->riscv_core__DOT__zero_ex_mem_o)) 
+                                                      | (((5U 
+                                                           == (IData)(vlSelf->riscv_core__DOT__branch_op_ex_mem_o)) 
+                                                          & (~ (IData)(vlSelf->riscv_core__DOT__zero_ex_mem_o))) 
+                                                         | (((6U 
+                                                              == (IData)(vlSelf->riscv_core__DOT__branch_op_ex_mem_o)) 
+                                                             & (IData)(vlSelf->riscv_core__DOT__less_ex_mem_o)) 
+                                                            | ((7U 
+                                                                == (IData)(vlSelf->riscv_core__DOT__branch_op_ex_mem_o)) 
+                                                               & (~ (IData)(vlSelf->riscv_core__DOT__less_ex_mem_o)))))))));
+    vlSelf->riscv_core__DOT__data_hazard_stall = ((IData)(vlSelf->riscv_core__DOT__mem_to_reg_id_ex_o) 
+                                                  & ((((IData)(vlSelf->riscv_core__DOT__rd_idx_id_ex_o) 
+                                                       == 
+                                                       (0x1fU 
+                                                        & (vlSelf->riscv_core__DOT__inst_if_id_o 
+                                                           >> 0xfU))) 
+                                                      | ((IData)(vlSelf->riscv_core__DOT__rd_idx_id_ex_o) 
+                                                         == 
+                                                         (0x1fU 
+                                                          & (vlSelf->riscv_core__DOT__inst_if_id_o 
+                                                             >> 0x14U)))) 
+                                                     & (0U 
+                                                        != (IData)(vlSelf->riscv_core__DOT__rd_idx_id_ex_o))));
+    vlSelf->riscv_core__DOT__rd_val = ((IData)(vlSelf->riscv_core__DOT__mem_to_reg_mem_wb_o)
+                                        ? vlSelf->riscv_core__DOT__mem_rd_val_mem_wb_o
+                                        : vlSelf->riscv_core__DOT__alu_p_val_mem_wb_o);
+    vlSelf->riscv_core__DOT__u0_forward__DOT____VdfgTmp_h10cb935f__0 
+        = ((IData)(vlSelf->riscv_core__DOT__reg_wr_mem_wb_o) 
+           & (0U != (IData)(vlSelf->riscv_core__DOT__rd_idx_mem_wb_o)));
+    vlSelf->riscv_core__DOT__u0_forward__DOT____VdfgTmp_h4508ef60__0 
+        = ((IData)(vlSelf->riscv_core__DOT__reg_wr_ex_mem_o) 
+           & (0U != (IData)(vlSelf->riscv_core__DOT__rd_idx_ex_mem_o)));
     vlSelf->riscv_core__DOT____Vcellout__u0_riscv_regfile__regfile_o[0U] 
         = vlSelf->riscv_core__DOT__u0_riscv_regfile__DOT__regfile
         [0U];
@@ -911,65 +849,18 @@ VL_ATTR_COLD void Vriscv_core___024root___stl_sequent__TOP__0(Vriscv_core___024r
     vlSelf->riscv_core__DOT____Vcellout__u0_riscv_regfile__regfile_o[0x1fU] 
         = vlSelf->riscv_core__DOT__u0_riscv_regfile__DOT__regfile
         [0x1fU];
-    vlSelf->data_we_o = vlSelf->riscv_core__DOT__mem_wr;
-    vlSelf->mem_to_reg_o = vlSelf->riscv_core__DOT__mem_to_reg;
-    vlSelf->riscv_core__DOT__imm = ((0U == (IData)(vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w))
-                                     ? (((- (IData)(
-                                                    (vlSelf->inst_i 
-                                                     >> 0x1fU))) 
-                                         << 0xcU) | 
-                                        (vlSelf->inst_i 
-                                         >> 0x14U))
-                                     : ((2U == (IData)(vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w))
-                                         ? (((- (IData)(
-                                                        (vlSelf->inst_i 
-                                                         >> 0x1fU))) 
-                                             << 0xcU) 
-                                            | ((0xfe0U 
-                                                & (vlSelf->inst_i 
-                                                   >> 0x14U)) 
-                                               | (0x1fU 
-                                                  & (vlSelf->inst_i 
-                                                     >> 7U))))
-                                         : ((3U == (IData)(vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w))
-                                             ? (((- (IData)(
-                                                            (vlSelf->inst_i 
-                                                             >> 0x1fU))) 
-                                                 << 0xcU) 
-                                                | ((0x800U 
-                                                    & (vlSelf->inst_i 
-                                                       << 4U)) 
-                                                   | ((0x7e0U 
-                                                       & (vlSelf->inst_i 
-                                                          >> 0x14U)) 
-                                                      | (0x1eU 
-                                                         & (vlSelf->inst_i 
-                                                            >> 7U)))))
-                                             : ((4U 
-                                                 == (IData)(vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w))
-                                                 ? 
-                                                (((- (IData)(
-                                                             (vlSelf->inst_i 
-                                                              >> 0x1fU))) 
-                                                  << 0x14U) 
-                                                 | ((0xff000U 
-                                                     & vlSelf->inst_i) 
-                                                    | ((0x800U 
-                                                        & (vlSelf->inst_i 
-                                                           >> 9U)) 
-                                                       | (0x7feU 
-                                                          & (vlSelf->inst_i 
-                                                             >> 0x14U)))))
-                                                 : 
-                                                ((1U 
-                                                  == (IData)(vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w))
-                                                  ? 
-                                                 (0xfffff000U 
-                                                  & vlSelf->inst_i)
-                                                  : 0U)))));
-    vlSelf->riscv_core__DOT__alu_a = ((IData)(vlSelf->riscv_core__DOT__alu_asrc)
-                                       ? vlSelf->riscv_core__DOT__pc
-                                       : vlSelf->riscv_core__DOT__rs1_val);
+    vlSelf->riscv_core__DOT____Vcellinp__u0_idu__flush 
+        = ((IData)(vlSelf->riscv_core__DOT__branch_taken) 
+           | (IData)(vlSelf->riscv_core__DOT__data_hazard_stall));
+    vlSelf->riscv_core__DOT__u0_forward__DOT__forwarda_C1 
+        = ((IData)(vlSelf->riscv_core__DOT__u0_forward__DOT____VdfgTmp_h4508ef60__0) 
+           & ((IData)(vlSelf->riscv_core__DOT__rd_idx_ex_mem_o) 
+              == (IData)(vlSelf->riscv_core__DOT__rs1_idx_id_ex_o)));
+    vlSelf->riscv_core__DOT__u0_forward__DOT__forwardb_cond1 
+        = ((IData)(vlSelf->riscv_core__DOT__u0_forward__DOT____VdfgTmp_h4508ef60__0) 
+           & (((IData)(vlSelf->riscv_core__DOT__rd_idx_ex_mem_o) 
+               == (IData)(vlSelf->riscv_core__DOT__rs2_idx_id_ex_o)) 
+              & (4U != (IData)(vlSelf->riscv_core__DOT__opcode_id_ex_o))));
     vlSelf->riscv_core__DOT__w_regs[0x1fU] = vlSelf->riscv_core__DOT____Vcellout__u0_riscv_regfile__regfile_o
         [0x1fU];
     vlSelf->riscv_core__DOT__w_regs[0x1eU] = vlSelf->riscv_core__DOT____Vcellout__u0_riscv_regfile__regfile_o
@@ -1034,14 +925,22 @@ VL_ATTR_COLD void Vriscv_core___024root___stl_sequent__TOP__0(Vriscv_core___024r
         [1U];
     vlSelf->riscv_core__DOT__w_regs[0U] = vlSelf->riscv_core__DOT____Vcellout__u0_riscv_regfile__regfile_o
         [0U];
-    vlSelf->riscv_core__DOT__alu_b = ((0U == (IData)(vlSelf->riscv_core__DOT__alu_bsrc))
-                                       ? vlSelf->data_o
-                                       : ((1U == (IData)(vlSelf->riscv_core__DOT__alu_bsrc))
-                                           ? vlSelf->riscv_core__DOT__imm
-                                           : ((2U == (IData)(vlSelf->riscv_core__DOT__alu_bsrc))
-                                               ? 4U
-                                               : 0U)));
-    Vriscv_core___024root____Vdpiimwrap_riscv_core__DOT__get_dut_regs_TOP(vlSelf->riscv_core__DOT__pc, 
+    vlSelf->riscv_core__DOT____VdfgTmp_h49a7b528__0 
+        = ((IData)(vlSelf->riscv_core__DOT__u0_forward__DOT__forwarda_C1)
+            ? 2U : (((IData)(vlSelf->riscv_core__DOT__u0_forward__DOT____VdfgTmp_h10cb935f__0) 
+                     & ((~ (IData)(vlSelf->riscv_core__DOT__u0_forward__DOT__forwarda_C1)) 
+                        & ((IData)(vlSelf->riscv_core__DOT__rd_idx_mem_wb_o) 
+                           == (IData)(vlSelf->riscv_core__DOT__rs1_idx_id_ex_o))))
+                     ? 1U : 0U));
+    vlSelf->riscv_core__DOT____VdfgTmp_hb43efe8a__0 
+        = ((IData)(vlSelf->riscv_core__DOT__u0_forward__DOT__forwardb_cond1)
+            ? 2U : (((IData)(vlSelf->riscv_core__DOT__u0_forward__DOT____VdfgTmp_h10cb935f__0) 
+                     & ((~ (IData)(vlSelf->riscv_core__DOT__u0_forward__DOT__forwardb_cond1)) 
+                        & (((IData)(vlSelf->riscv_core__DOT__rd_idx_mem_wb_o) 
+                            == (IData)(vlSelf->riscv_core__DOT__rs2_idx_id_ex_o)) 
+                           & (4U != (IData)(vlSelf->riscv_core__DOT__opcode_id_ex_o)))))
+                     ? 1U : 0U));
+    Vriscv_core___024root____Vdpiimwrap_riscv_core__DOT__get_dut_regs_TOP(vlSelf->inst_addr_o, 
                                                                           vlSelf->riscv_core__DOT__w_regs
                                                                           [0U], 
                                                                           vlSelf->riscv_core__DOT__w_regs
@@ -1106,120 +1005,141 @@ VL_ATTR_COLD void Vriscv_core___024root___stl_sequent__TOP__0(Vriscv_core___024r
                                                                           [0x1eU], 
                                                                           vlSelf->riscv_core__DOT__w_regs
                                                                           [0x1fU]);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_left_1_r 
-        = ((1U & vlSelf->riscv_core__DOT__alu_b) ? 
-           (vlSelf->riscv_core__DOT__alu_a << 1U) : vlSelf->riscv_core__DOT__alu_a);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_left_2_r 
-        = ((2U & vlSelf->riscv_core__DOT__alu_b) ? 
-           (vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_left_1_r 
-            << 2U) : vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_left_1_r);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_left_4_r 
-        = ((4U & vlSelf->riscv_core__DOT__alu_b) ? 
-           (vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_left_2_r 
-            << 4U) : vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_left_2_r);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_left_8_r 
-        = ((8U & vlSelf->riscv_core__DOT__alu_b) ? 
-           (vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_left_4_r 
-            << 8U) : vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_left_4_r);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_fill_r 
-        = (((vlSelf->riscv_core__DOT__alu_a >> 0x1fU) 
-            & ((IData)(vlSelf->riscv_core__DOT__alu_ctr) 
-               >> 3U)) ? 0xffffU : 0U);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_1_r 
-        = ((1U & vlSelf->riscv_core__DOT__alu_b) ? 
-           ((0x80000000U & ((IData)(vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_fill_r) 
-                            << 0x10U)) | (vlSelf->riscv_core__DOT__alu_a 
-                                          >> 1U)) : vlSelf->riscv_core__DOT__alu_a);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_2_r 
-        = ((2U & vlSelf->riscv_core__DOT__alu_b) ? 
-           ((0xc0000000U & ((IData)(vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_fill_r) 
-                            << 0x10U)) | (vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_1_r 
-                                          >> 2U)) : vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_1_r);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_4_r 
-        = ((4U & vlSelf->riscv_core__DOT__alu_b) ? 
-           ((0xf0000000U & ((IData)(vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_fill_r) 
-                            << 0x10U)) | (vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_2_r 
-                                          >> 4U)) : vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_2_r);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_8_r 
-        = ((8U & vlSelf->riscv_core__DOT__alu_b) ? 
-           ((0xff000000U & ((IData)(vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_fill_r) 
-                            << 0x10U)) | (vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_4_r 
-                                          >> 8U)) : vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_4_r);
-    if ((0x10U & vlSelf->riscv_core__DOT__alu_b)) {
-        vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_sl 
-            = (vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_left_8_r 
+    vlSelf->riscv_core__DOT__rs1_val_alu_i = ((0U == (IData)(vlSelf->riscv_core__DOT____VdfgTmp_h49a7b528__0))
+                                               ? vlSelf->riscv_core__DOT__rs1_val_id_ex_o
+                                               : ((1U 
+                                                   == (IData)(vlSelf->riscv_core__DOT____VdfgTmp_h49a7b528__0))
+                                                   ? vlSelf->riscv_core__DOT__rd_val
+                                                   : 
+                                                  ((2U 
+                                                    == (IData)(vlSelf->riscv_core__DOT____VdfgTmp_h49a7b528__0))
+                                                    ? vlSelf->riscv_core__DOT__alu_p_val_ex_mem_o
+                                                    : vlSelf->riscv_core__DOT__rs1_val_id_ex_o)));
+    vlSelf->riscv_core__DOT__rs2_val_alu_i = ((0U == (IData)(vlSelf->riscv_core__DOT____VdfgTmp_hb43efe8a__0))
+                                               ? vlSelf->riscv_core__DOT__rs2_val_id_ex_o
+                                               : ((1U 
+                                                   == (IData)(vlSelf->riscv_core__DOT____VdfgTmp_hb43efe8a__0))
+                                                   ? vlSelf->riscv_core__DOT__rd_val
+                                                   : 
+                                                  ((2U 
+                                                    == (IData)(vlSelf->riscv_core__DOT____VdfgTmp_hb43efe8a__0))
+                                                    ? vlSelf->riscv_core__DOT__alu_p_val_ex_mem_o
+                                                    : vlSelf->riscv_core__DOT__rs2_val_id_ex_o)));
+    vlSelf->riscv_core__DOT__alu_a_val_ex_mem_i = ((IData)(vlSelf->riscv_core__DOT__alu_asrc_id_ex_o)
+                                                    ? vlSelf->riscv_core__DOT__pc_id_ex_o
+                                                    : vlSelf->riscv_core__DOT__rs1_val_alu_i);
+    vlSelf->riscv_core__DOT__alu_b_val_ex_mem_i = (
+                                                   (0U 
+                                                    == (IData)(vlSelf->riscv_core__DOT__alu_bsrc_id_ex_o))
+                                                    ? vlSelf->riscv_core__DOT__rs2_val_alu_i
+                                                    : 
+                                                   ((1U 
+                                                     == (IData)(vlSelf->riscv_core__DOT__alu_bsrc_id_ex_o))
+                                                     ? vlSelf->riscv_core__DOT__imm_id_ex_o
+                                                     : 
+                                                    ((2U 
+                                                      == (IData)(vlSelf->riscv_core__DOT__alu_bsrc_id_ex_o))
+                                                      ? 4U
+                                                      : 0U)));
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_left_1_r 
+        = ((1U & vlSelf->riscv_core__DOT__alu_b_val_ex_mem_i)
+            ? (vlSelf->riscv_core__DOT__alu_a_val_ex_mem_i 
+               << 1U) : vlSelf->riscv_core__DOT__alu_a_val_ex_mem_i);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_left_2_r 
+        = ((2U & vlSelf->riscv_core__DOT__alu_b_val_ex_mem_i)
+            ? (vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_left_1_r 
+               << 2U) : vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_left_1_r);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_left_4_r 
+        = ((4U & vlSelf->riscv_core__DOT__alu_b_val_ex_mem_i)
+            ? (vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_left_2_r 
+               << 4U) : vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_left_2_r);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_left_8_r 
+        = ((8U & vlSelf->riscv_core__DOT__alu_b_val_ex_mem_i)
+            ? (vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_left_4_r 
+               << 8U) : vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_left_4_r);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_fill_r 
+        = (((vlSelf->riscv_core__DOT__alu_a_val_ex_mem_i 
+             >> 0x1fU) & ((IData)(vlSelf->riscv_core__DOT__alu_ctr_id_ex_o) 
+                          >> 3U)) ? 0xffffU : 0U);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_1_r 
+        = ((1U & vlSelf->riscv_core__DOT__alu_b_val_ex_mem_i)
+            ? ((0x80000000U & ((IData)(vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_fill_r) 
+                               << 0x10U)) | (vlSelf->riscv_core__DOT__alu_a_val_ex_mem_i 
+                                             >> 1U))
+            : vlSelf->riscv_core__DOT__alu_a_val_ex_mem_i);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_2_r 
+        = ((2U & vlSelf->riscv_core__DOT__alu_b_val_ex_mem_i)
+            ? ((0xc0000000U & ((IData)(vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_fill_r) 
+                               << 0x10U)) | (vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_1_r 
+                                             >> 2U))
+            : vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_1_r);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_4_r 
+        = ((4U & vlSelf->riscv_core__DOT__alu_b_val_ex_mem_i)
+            ? ((0xf0000000U & ((IData)(vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_fill_r) 
+                               << 0x10U)) | (vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_2_r 
+                                             >> 4U))
+            : vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_2_r);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_8_r 
+        = ((8U & vlSelf->riscv_core__DOT__alu_b_val_ex_mem_i)
+            ? ((0xff000000U & ((IData)(vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_fill_r) 
+                               << 0x10U)) | (vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_4_r 
+                                             >> 8U))
+            : vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_4_r);
+    if ((0x10U & vlSelf->riscv_core__DOT__alu_b_val_ex_mem_i)) {
+        vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_sl 
+            = (vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_left_8_r 
                << 0x10U);
-        vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_sr 
-            = (((IData)(vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_fill_r) 
-                << 0x10U) | (vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_8_r 
+        vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_sr 
+            = (((IData)(vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_fill_r) 
+                << 0x10U) | (vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_8_r 
                              >> 0x10U));
     } else {
-        vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_sl 
-            = vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_left_8_r;
-        vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_sr 
-            = vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_8_r;
+        vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_sl 
+            = vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_left_8_r;
+        vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_sr 
+            = vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_8_r;
     }
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_sub 
-        = (vlSelf->riscv_core__DOT__alu_a - vlSelf->riscv_core__DOT__alu_b);
-    if ((8U & (IData)(vlSelf->riscv_core__DOT__alu_ctr))) {
-        vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_add 
-            = vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_sub;
-        vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_set 
-            = ((vlSelf->riscv_core__DOT__alu_a < vlSelf->riscv_core__DOT__alu_b)
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_sub 
+        = (vlSelf->riscv_core__DOT__alu_a_val_ex_mem_i 
+           - vlSelf->riscv_core__DOT__alu_b_val_ex_mem_i);
+    if ((8U & (IData)(vlSelf->riscv_core__DOT__alu_ctr_id_ex_o))) {
+        vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_set 
+            = ((vlSelf->riscv_core__DOT__alu_a_val_ex_mem_i 
+                < vlSelf->riscv_core__DOT__alu_b_val_ex_mem_i)
                 ? 1U : 0U);
+        vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_add 
+            = vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_sub;
     } else {
-        vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_add 
-            = (vlSelf->riscv_core__DOT__alu_a + vlSelf->riscv_core__DOT__alu_b);
-        vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_set 
-            = (((vlSelf->riscv_core__DOT__alu_a >> 0x1fU) 
-                == (vlSelf->riscv_core__DOT__alu_b 
-                    >> 0x1fU)) ? ((vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_sub 
-                                   >> 0x1fU) ? 1U : 0U)
-                : ((vlSelf->riscv_core__DOT__alu_a 
+        vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_set 
+            = (((vlSelf->riscv_core__DOT__alu_a_val_ex_mem_i 
+                 >> 0x1fU) == (vlSelf->riscv_core__DOT__alu_b_val_ex_mem_i 
+                               >> 0x1fU)) ? ((vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_sub 
+                                              >> 0x1fU)
+                                              ? 1U : 0U)
+                : ((vlSelf->riscv_core__DOT__alu_a_val_ex_mem_i 
                     >> 0x1fU) ? 1U : 0U));
+        vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_add 
+            = (vlSelf->riscv_core__DOT__alu_a_val_ex_mem_i 
+               + vlSelf->riscv_core__DOT__alu_b_val_ex_mem_i);
     }
-    vlSelf->data_addr_o = ((0U == (7U & (IData)(vlSelf->riscv_core__DOT__alu_ctr)))
-                            ? vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_add
-                            : ((1U == (7U & (IData)(vlSelf->riscv_core__DOT__alu_ctr)))
-                                ? vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_sl
-                                : ((2U == (7U & (IData)(vlSelf->riscv_core__DOT__alu_ctr)))
-                                    ? vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_set
-                                    : ((3U == (7U & (IData)(vlSelf->riscv_core__DOT__alu_ctr)))
-                                        ? vlSelf->riscv_core__DOT__alu_b
-                                        : ((4U == (7U 
-                                                   & (IData)(vlSelf->riscv_core__DOT__alu_ctr)))
-                                            ? (vlSelf->riscv_core__DOT__alu_a 
-                                               ^ vlSelf->riscv_core__DOT__alu_b)
-                                            : ((5U 
-                                                == 
-                                                (7U 
-                                                 & (IData)(vlSelf->riscv_core__DOT__alu_ctr)))
-                                                ? vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_sr
-                                                : (
-                                                   (6U 
-                                                    == 
-                                                    (7U 
-                                                     & (IData)(vlSelf->riscv_core__DOT__alu_ctr)))
-                                                    ? 
-                                                   (vlSelf->riscv_core__DOT__alu_a 
-                                                    | vlSelf->riscv_core__DOT__alu_b)
-                                                    : vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_add)))))));
-    vlSelf->riscv_core__DOT__rd_val = ((IData)(vlSelf->riscv_core__DOT__mem_to_reg)
-                                        ? vlSelf->data_i
-                                        : vlSelf->data_addr_o);
-    vlSelf->__Vtableidx1 = ((((2U == (7U & (IData)(vlSelf->riscv_core__DOT__alu_ctr))) 
-                              & vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_set) 
-                             << 4U) | (((0U == vlSelf->data_addr_o) 
-                                        << 3U) | (IData)(vlSelf->riscv_core__DOT__branch_op)));
-    vlSelf->riscv_core__DOT__u0_ifu__DOT__u0_riscv_npc__DOT__pc_a_src_o 
-        = Vriscv_core__ConstPool__TABLE_hd160473a_0
-        [vlSelf->__Vtableidx1];
-    vlSelf->riscv_core__DOT__u0_ifu__DOT__u0_riscv_npc__DOT__pc_b_src_o 
-        = Vriscv_core__ConstPool__TABLE_hca1c778d_0
-        [vlSelf->__Vtableidx1];
-    vlSelf->riscv_core__DOT__u0_ifu__DOT__u0_riscv_npc__DOT__npc_add1 
-        = ((IData)(vlSelf->riscv_core__DOT__u0_ifu__DOT__u0_riscv_npc__DOT__pc_b_src_o)
-            ? vlSelf->riscv_core__DOT__rs1_val : vlSelf->riscv_core__DOT__pc);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__alu_p_w = 
+        ((0U == (7U & (IData)(vlSelf->riscv_core__DOT__alu_ctr_id_ex_o)))
+          ? vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_add
+          : ((1U == (7U & (IData)(vlSelf->riscv_core__DOT__alu_ctr_id_ex_o)))
+              ? vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_sl
+              : ((2U == (7U & (IData)(vlSelf->riscv_core__DOT__alu_ctr_id_ex_o)))
+                  ? vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_set
+                  : ((3U == (7U & (IData)(vlSelf->riscv_core__DOT__alu_ctr_id_ex_o)))
+                      ? vlSelf->riscv_core__DOT__alu_b_val_ex_mem_i
+                      : ((4U == (7U & (IData)(vlSelf->riscv_core__DOT__alu_ctr_id_ex_o)))
+                          ? (vlSelf->riscv_core__DOT__alu_a_val_ex_mem_i 
+                             ^ vlSelf->riscv_core__DOT__alu_b_val_ex_mem_i)
+                          : ((5U == (7U & (IData)(vlSelf->riscv_core__DOT__alu_ctr_id_ex_o)))
+                              ? vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_sr
+                              : ((6U == (7U & (IData)(vlSelf->riscv_core__DOT__alu_ctr_id_ex_o)))
+                                  ? (vlSelf->riscv_core__DOT__alu_a_val_ex_mem_i 
+                                     | vlSelf->riscv_core__DOT__alu_b_val_ex_mem_i)
+                                  : vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_add)))))));
 }
 
 VL_ATTR_COLD void Vriscv_core___024root___eval_stl(Vriscv_core___024root* vlSelf) {
@@ -1229,6 +1149,9 @@ VL_ATTR_COLD void Vriscv_core___024root___eval_stl(Vriscv_core___024root* vlSelf
     // Body
     if (vlSelf->__VstlTriggered.at(0U)) {
         Vriscv_core___024root___stl_sequent__TOP__0(vlSelf);
+        vlSelf->__Vm_traceActivity[7U] = 1U;
+        vlSelf->__Vm_traceActivity[6U] = 1U;
+        vlSelf->__Vm_traceActivity[5U] = 1U;
         vlSelf->__Vm_traceActivity[4U] = 1U;
         vlSelf->__Vm_traceActivity[3U] = 1U;
         vlSelf->__Vm_traceActivity[2U] = 1U;
@@ -1236,21 +1159,6 @@ VL_ATTR_COLD void Vriscv_core___024root___eval_stl(Vriscv_core___024root* vlSelf
         vlSelf->__Vm_traceActivity[0U] = 1U;
     }
 }
-
-#ifdef VL_DEBUG
-VL_ATTR_COLD void Vriscv_core___024root___dump_triggers__ico(Vriscv_core___024root* vlSelf) {
-    if (false && vlSelf) {}  // Prevent unused
-    Vriscv_core__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vriscv_core___024root___dump_triggers__ico\n"); );
-    // Body
-    if ((1U & (~ (IData)(vlSelf->__VicoTriggered.any())))) {
-        VL_DBG_MSGF("         No triggers active\n");
-    }
-    if (vlSelf->__VicoTriggered.at(0U)) {
-        VL_DBG_MSGF("         'ico' region trigger index 0 is active: Internal 'ico' trigger - first iteration\n");
-    }
-}
-#endif  // VL_DEBUG
 
 #ifdef VL_DEBUG
 VL_ATTR_COLD void Vriscv_core___024root___dump_triggers__act(Vriscv_core___024root* vlSelf) {
@@ -1297,49 +1205,106 @@ VL_ATTR_COLD void Vriscv_core___024root___ctor_var_reset(Vriscv_core___024root* 
     vlSelf->data_ce_o = VL_RAND_RESET_I(1);
     vlSelf->data_addr_o = VL_RAND_RESET_I(32);
     vlSelf->data_o = VL_RAND_RESET_I(32);
-    vlSelf->mem_to_reg_o = VL_RAND_RESET_I(1);
-    vlSelf->riscv_core__DOT__reg_wr = VL_RAND_RESET_I(1);
-    vlSelf->riscv_core__DOT__branch_op = VL_RAND_RESET_I(3);
-    vlSelf->riscv_core__DOT__mem_to_reg = VL_RAND_RESET_I(1);
-    vlSelf->riscv_core__DOT__mem_wr = VL_RAND_RESET_I(1);
-    vlSelf->riscv_core__DOT__mem_op = VL_RAND_RESET_I(3);
-    vlSelf->riscv_core__DOT__alu_asrc = VL_RAND_RESET_I(1);
-    vlSelf->riscv_core__DOT__alu_bsrc = VL_RAND_RESET_I(2);
-    vlSelf->riscv_core__DOT__alu_ctr = VL_RAND_RESET_I(4);
-    vlSelf->riscv_core__DOT__pc = VL_RAND_RESET_I(32);
-    vlSelf->riscv_core__DOT__imm = VL_RAND_RESET_I(32);
-    vlSelf->riscv_core__DOT__rs1_val = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__data_hazard_stall = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__branch_taken = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__inst_if_id_o = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__pc_if_id_o = VL_RAND_RESET_I(32);
     vlSelf->riscv_core__DOT__rd_val = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__reg_wr_id_ex_o = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__branch_op_id_ex_o = VL_RAND_RESET_I(3);
+    vlSelf->riscv_core__DOT__mem_to_reg_id_ex_o = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__mem_wr_id_ex_o = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__mem_op_id_ex_o = VL_RAND_RESET_I(3);
+    vlSelf->riscv_core__DOT__alu_ctr_id_ex_o = VL_RAND_RESET_I(4);
+    vlSelf->riscv_core__DOT__rs1_val_id_ex_o = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__rs2_val_id_ex_o = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__rs1_idx_id_ex_o = VL_RAND_RESET_I(5);
+    vlSelf->riscv_core__DOT__rs2_idx_id_ex_o = VL_RAND_RESET_I(5);
+    vlSelf->riscv_core__DOT__rd_idx_id_ex_o = VL_RAND_RESET_I(5);
+    vlSelf->riscv_core__DOT__pc_id_ex_o = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__imm_id_ex_o = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__opcode_id_ex_o = VL_RAND_RESET_I(5);
+    vlSelf->riscv_core__DOT__alu_asrc_id_ex_o = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__alu_bsrc_id_ex_o = VL_RAND_RESET_I(2);
+    vlSelf->riscv_core__DOT__reg_wr_ex_mem_o = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__branch_op_ex_mem_o = VL_RAND_RESET_I(3);
+    vlSelf->riscv_core__DOT__mem_to_reg_ex_mem_o = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__mem_wr_ex_mem_o = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__rd_idx_ex_mem_o = VL_RAND_RESET_I(5);
+    vlSelf->riscv_core__DOT__mem_op_ex_mem_o = VL_RAND_RESET_I(3);
+    vlSelf->riscv_core__DOT__rs1_val_ex_mem_o = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__rs2_val_ex_mem_o = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__pc_ex_mem_o = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__alu_p_val_ex_mem_o = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__zero_ex_mem_o = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__less_ex_mem_o = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__imm_ex_mem_o = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__mem_to_reg_mem_wb_o = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__reg_wr_mem_wb_o = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__alu_p_val_mem_wb_o = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__mem_rd_val_mem_wb_o = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__rd_idx_mem_wb_o = VL_RAND_RESET_I(5);
+    vlSelf->riscv_core__DOT____Vcellinp__u0_idu__flush = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__rs1_val_alu_i = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__rs2_val_alu_i = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__alu_a_val_ex_mem_i = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__alu_b_val_ex_mem_i = VL_RAND_RESET_I(32);
     for (int __Vi0 = 0; __Vi0 < 32; ++__Vi0) {
         vlSelf->riscv_core__DOT__w_regs[__Vi0] = VL_RAND_RESET_I(32);
     }
     for (int __Vi0 = 0; __Vi0 < 32; ++__Vi0) {
         vlSelf->riscv_core__DOT____Vcellout__u0_riscv_regfile__regfile_o[__Vi0] = VL_RAND_RESET_I(32);
     }
-    vlSelf->riscv_core__DOT__alu_a = VL_RAND_RESET_I(32);
-    vlSelf->riscv_core__DOT__alu_b = VL_RAND_RESET_I(32);
-    vlSelf->riscv_core__DOT__u0_ifu__DOT__u0_riscv_npc__DOT__pc_a_src_o = VL_RAND_RESET_I(1);
-    vlSelf->riscv_core__DOT__u0_ifu__DOT__u0_riscv_npc__DOT__pc_b_src_o = VL_RAND_RESET_I(1);
-    vlSelf->riscv_core__DOT__u0_ifu__DOT__u0_riscv_npc__DOT__npc_add1 = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT____VdfgTmp_h49a7b528__0 = 0;
+    vlSelf->riscv_core__DOT____VdfgTmp_hb43efe8a__0 = 0;
+    vlSelf->riscv_core__DOT__u0_ifu__DOT__pc_w = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = VL_RAND_RESET_I(3);
+    vlSelf->riscv_core__DOT__u0_idu__DOT__regwr_w = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = VL_RAND_RESET_I(3);
+    vlSelf->riscv_core__DOT__u0_idu__DOT__memtoreg_w = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__u0_idu__DOT__memwr_w = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__u0_idu__DOT__memop_w = VL_RAND_RESET_I(3);
+    vlSelf->riscv_core__DOT__u0_idu__DOT__alua_src_w = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = VL_RAND_RESET_I(2);
+    vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = VL_RAND_RESET_I(4);
+    vlSelf->riscv_core__DOT__u0_idu__DOT__u0_id_ex__DOT__stall = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__alu_p_w = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_sl = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_sr = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_sub = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_add = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_set = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_fill_r = VL_RAND_RESET_I(16);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_1_r = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_2_r = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_4_r = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_right_8_r = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_left_1_r = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_left_2_r = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_left_4_r = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_left_8_r = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__u0_lsu__DOT__stall = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__u0_lsu__DOT__flush = VL_RAND_RESET_I(1);
     for (int __Vi0 = 0; __Vi0 < 32; ++__Vi0) {
         vlSelf->riscv_core__DOT__u0_riscv_regfile__DOT__regfile[__Vi0] = VL_RAND_RESET_I(32);
     }
-    vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = VL_RAND_RESET_I(3);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_sl = VL_RAND_RESET_I(32);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_sr = VL_RAND_RESET_I(32);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_sub = VL_RAND_RESET_I(32);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_add = VL_RAND_RESET_I(32);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__result_set = VL_RAND_RESET_I(32);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_fill_r = VL_RAND_RESET_I(16);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_1_r = VL_RAND_RESET_I(32);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_2_r = VL_RAND_RESET_I(32);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_4_r = VL_RAND_RESET_I(32);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_right_8_r = VL_RAND_RESET_I(32);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_left_1_r = VL_RAND_RESET_I(32);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_left_2_r = VL_RAND_RESET_I(32);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_left_4_r = VL_RAND_RESET_I(32);
-    vlSelf->riscv_core__DOT__u0_exu__DOT__u0_riscv_alu__DOT__shift_left_8_r = VL_RAND_RESET_I(32);
-    vlSelf->__Vtableidx1 = 0;
+    vlSelf->riscv_core__DOT__u0_forward__DOT__forwarda_C1 = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__u0_forward__DOT__forwardb_cond1 = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__u0_forward__DOT____VdfgTmp_h4508ef60__0 = 0;
+    vlSelf->riscv_core__DOT__u0_forward__DOT____VdfgTmp_h10cb935f__0 = 0;
+    vlSelf->__Vdly__riscv_core__DOT__inst_if_id_o = VL_RAND_RESET_I(32);
+    vlSelf->__Vdly__riscv_core__DOT__pc_if_id_o = VL_RAND_RESET_I(32);
+    vlSelf->__Vdly__riscv_core__DOT__alu_ctr_id_ex_o = VL_RAND_RESET_I(4);
+    vlSelf->__Vdly__riscv_core__DOT__mem_op_id_ex_o = VL_RAND_RESET_I(3);
+    vlSelf->__Vdly__riscv_core__DOT__mem_wr_id_ex_o = VL_RAND_RESET_I(1);
+    vlSelf->__Vdly__riscv_core__DOT__mem_to_reg_id_ex_o = VL_RAND_RESET_I(1);
+    vlSelf->__Vdly__riscv_core__DOT__branch_op_id_ex_o = VL_RAND_RESET_I(3);
+    vlSelf->__Vdly__riscv_core__DOT__reg_wr_id_ex_o = VL_RAND_RESET_I(1);
+    vlSelf->__Vdly__riscv_core__DOT__rd_idx_id_ex_o = VL_RAND_RESET_I(5);
+    vlSelf->__Vdly__riscv_core__DOT__pc_id_ex_o = VL_RAND_RESET_I(32);
+    vlSelf->__Vdly__riscv_core__DOT__imm_id_ex_o = VL_RAND_RESET_I(32);
+    vlSelf->__Vdly__riscv_core__DOT__reg_wr_mem_wb_o = VL_RAND_RESET_I(1);
+    vlSelf->__Vdly__riscv_core__DOT__rd_idx_mem_wb_o = VL_RAND_RESET_I(5);
     vlSelf->__Vdlyvset__riscv_core__DOT__u0_riscv_regfile__DOT__regfile__v0 = 0;
     vlSelf->__Vdlyvset__riscv_core__DOT__u0_riscv_regfile__DOT__regfile__v1 = 0;
     vlSelf->__Vdlyvset__riscv_core__DOT__u0_riscv_regfile__DOT__regfile__v2 = 0;
@@ -1437,7 +1402,7 @@ VL_ATTR_COLD void Vriscv_core___024root___ctor_var_reset(Vriscv_core___024root* 
     vlSelf->__Vdlyvset__riscv_core__DOT__u0_riscv_regfile__DOT__regfile__v63 = 0;
     vlSelf->__Vtrigrprev__TOP__clk = VL_RAND_RESET_I(1);
     vlSelf->__Vtrigrprev__TOP__rst = VL_RAND_RESET_I(1);
-    for (int __Vi0 = 0; __Vi0 < 5; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 8; ++__Vi0) {
         vlSelf->__Vm_traceActivity[__Vi0] = 0;
     }
 }

@@ -3,9 +3,10 @@
 #include "verilated.h"
 #include "verilated_fst_c.h"
 #include <common.h>
-#include <memory/paddr.h>
-#include <memory/vaddr.h>
-#include <memory/host.h>
+
+// #include <memory/paddr.h>
+// #include <memory/vaddr.h>
+// #include <memory/host.h>
 
 
 #include <iostream>
@@ -22,17 +23,19 @@ int  good_trap    = false;
 extern regfile dut_reg;
 
 #ifdef DUMPWAVE_ON
-void dump_wave(VerilatedContext* contextp,VerilatedFstC* fstp, Vriscv_core* top);
+void dump_wave(VerilatedContext* contextp, VerilatedFstC* fstp, Vriscv_core* top);
 #endif
 
-// data_mem_read(top->data_ce_o, top->data_we_o, top->data_addr_o, &(top->data_i));
-void data_mem_read(bool ce, bool we, bool valid, uint32_t data_addr, uint32_t* data_i);
+void connect_wire(int &isram, double &dsram, Vriscv_core *core);
 
-// data_mem_write(top->data_ce_o, top->data_we_o, top->data_addr_o, &(top->data_o))
-void data_mem_write(bool ce, bool we, uint32_t data_addr, uint32_t* data_o);
+// // data_mem_read(top->data_ce_o, top->data_we_o, top->data_addr_o, &(top->data_i));
+// void data_mem_read(bool ce, bool we, bool valid, uint32_t data_addr, uint32_t* data_i);
 
-// inst_mem_read(top->inst_ce_o, top->inst_addr_o, &(top->inst_i))
-void inst_mem_read(bool ce, uint32_t inst_addr, uint32_t* inst_i);
+// // data_mem_write(top->data_ce_o, top->data_we_o, top->data_addr_o, &(top->data_o))
+// void data_mem_write(bool ce, bool we, uint32_t data_addr, uint32_t* data_o);
+
+// // inst_mem_read(top->inst_ce_o, top->inst_addr_o, &(top->inst_i))
+// void inst_mem_read(bool ce, uint32_t inst_addr, uint32_t* inst_i);
 
 int main(int argc, char** argv, char** env){
 
@@ -56,8 +59,16 @@ int main(int argc, char** argv, char** env){
     top->rst = !0;
     top->eval();
     top->rst = 0;
-    //
+    // initialize npc core and memory protocal
     npc_init(argc, argv);
+
+    isram_interface isram_itf;
+    dsram_interface dsram_itf;
+
+    isram isram;
+    dsram dsram;
+
+    connect_wire(isram_itf, dsram_itf, top);
 
 #ifdef DIFFTEST_ON
     bool diff_skip_r;
@@ -72,11 +83,15 @@ int main(int argc, char** argv, char** env){
 
         // dut driver(posedge)
         if(top->clk){
-            inst_mem_read(top->inst_ce_o, top->inst_addr_o, &(top->inst_i));
+            // inst_mem_read(top->inst_ce_o, top->inst_addr_o, &(top->inst_i));
             top->eval();
             printf("cycle: %d\n", cycles);
-            data_mem_read(top->data_ce_o, top->data_we_o, top->mem_to_reg_o, top->data_addr_o, &(top->data_i));
-            data_mem_write(top->data_ce_o, top->data_we_o, top->data_addr_o, &(top->data_o));
+
+            // sram.sv invoke data_mem_read/ data_mem_write with DPI-C
+            // data_mem_read(top->data_ce_o, top->data_we_o, top->mem_to_reg_o, top->data_addr_o, &(top->data_i));
+            // data_mem_write(top->data_ce_o, top->data_we_o, top->data_addr_o, &(top->data_o));
+
+
 #ifdef DIFFTEST_ON
           // // 1. check last cycle reg status:
           // if(!diff_skip){ //skip write or read device ins.
@@ -133,22 +148,33 @@ void dump_wave(VerilatedContext* contextp,VerilatedFstC* fstp,Vriscv_core* top)
 }
 #endif
 
-// TODO: replace with CData, SData, IData, QData
 
-// data_mem_read(top->data_ce_o, top->data_we_o, top->mem_to_reg_o, top->data_addr_o, &(top->data_i));
-void data_mem_read(bool ce, bool we, bool valid, uint32_t data_addr, uint32_t* data_i){
-  if(ce & !we & valid) *data_i = (IData)vaddr_read(data_addr, 4);
-  if(ce & !we & valid) printf("fib debugger: 0x%08x\n", vaddr_read(data_addr, 4));
+void connect_wire(int &isram, double &dsram, Vriscv_core *core){
+  // fetch addr of corresponding signals in top object, binding them to interface
+  // isram.ce = &(core->inst_ce_o);
+  // isram.addr = &(core->inst_addr_o);
+  // isram.rdata = &(core->inst_i);
+  // dsram.we = &(core->data_we_o);
+  // dsram.ce = &(core->data_ce_o);
+  // dsram.addr = &(core->data_addr_o);
+  // dsram.wdata = &(core->data_o);
+  // dsram.rdata = &(core->data_i);
 }
 
-// data_mem_write(top->data_ce_o, top->data_we_o, top->data_addr_o, &(top->data_o))
-void data_mem_write(bool ce, bool we, uint32_t data_addr, uint32_t* data_o){
-  if(ce & we){
-    vaddr_write(data_addr, 4, *data_o);
-  }
-}
+// // data_mem_read(top->data_ce_o, top->data_we_o, top->mem_to_reg_o, top->data_addr_o, &(top->data_i));
+// void data_mem_read(bool ce, bool we, bool valid, uint32_t data_addr, uint32_t* data_i){
+//   if(ce & !we & valid) *data_i = (IData)vaddr_read(data_addr, 4);
+//   if(ce & !we & valid) printf("fib debugger: 0x%08x\n", vaddr_read(data_addr, 4));
+// }
 
-// inst_mem_read(top->inst_ce_o, top->inst_addr_o, &(top->inst_i))
-void inst_mem_read(bool ce, uint32_t inst_addr, uint32_t* inst_i){
-  if(ce) *inst_i = vaddr_ifetch(inst_addr, 4);
-}
+// // data_mem_write(top->data_ce_o, top->data_we_o, top->data_addr_o, &(top->data_o))
+// void data_mem_write(bool ce, bool we, uint32_t data_addr, uint32_t* data_o){
+//   if(ce & we){
+//     vaddr_write(data_addr, 4, *data_o);
+//   }
+// }
+
+// // inst_mem_read(top->inst_ce_o, top->inst_addr_o, &(top->inst_i))
+// void inst_mem_read(bool ce, uint32_t inst_addr, uint32_t* inst_i){
+//   if(ce) *inst_i = vaddr_ifetch(inst_addr, 4);
+// }

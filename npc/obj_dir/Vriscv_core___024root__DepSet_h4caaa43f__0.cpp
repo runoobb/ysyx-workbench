@@ -93,23 +93,6 @@ VL_INLINE_OPT void Vriscv_core___024root____Vdpiimwrap_riscv_core__DOT__get_diff
 }
 
 #ifdef VL_DEBUG
-VL_ATTR_COLD void Vriscv_core___024root___dump_triggers__ico(Vriscv_core___024root* vlSelf);
-#endif  // VL_DEBUG
-
-void Vriscv_core___024root___eval_triggers__ico(Vriscv_core___024root* vlSelf) {
-    if (false && vlSelf) {}  // Prevent unused
-    Vriscv_core__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vriscv_core___024root___eval_triggers__ico\n"); );
-    // Body
-    vlSelf->__VicoTriggered.at(0U) = (0U == vlSelf->__VicoIterCount);
-#ifdef VL_DEBUG
-    if (VL_UNLIKELY(vlSymsp->_vm_contextp__->debug())) {
-        Vriscv_core___024root___dump_triggers__ico(vlSelf);
-    }
-#endif
-}
-
-#ifdef VL_DEBUG
 VL_ATTR_COLD void Vriscv_core___024root___dump_triggers__act(Vriscv_core___024root* vlSelf);
 #endif  // VL_DEBUG
 
@@ -146,112 +129,103 @@ void Vriscv_core___024root___eval_nba(Vriscv_core___024root* vlSelf) {
     vlSelf->__Vm_mtaskstate_final__nba.waitUntilUpstreamDone(vlSymsp->__Vm_even_cycle__nba);
 }
 
-void Vriscv_core___024root___nba_sequent__TOP__0(Vriscv_core___024root* vlSelf);
 void Vriscv_core___024root___nba_sequent__TOP__1(Vriscv_core___024root* vlSelf);
-void Vriscv_core___024root___nba_sequent__TOP__4(Vriscv_core___024root* vlSelf);
-void Vriscv_core___024root___nba_sequent__TOP__6(Vriscv_core___024root* vlSelf);
-void Vriscv_core___024root___nba_sequent__TOP__10(Vriscv_core___024root* vlSelf);
+void Vriscv_core___024root___nba_sequent__TOP__2(Vriscv_core___024root* vlSelf);
+void Vriscv_core___024root___nba_sequent__TOP__5(Vriscv_core___024root* vlSelf);
 void Vriscv_core___024root___nba_sequent__TOP__11(Vriscv_core___024root* vlSelf);
-void Vriscv_core___024root___nba_sequent__TOP__13(Vriscv_core___024root* vlSelf);
+void Vriscv_core___024root___nba_sequent__TOP__8(Vriscv_core___024root* vlSelf);
+void Vriscv_core___024root___nba_sequent__TOP__10(Vriscv_core___024root* vlSelf);
 
 void Vriscv_core___024root____Vthread__nba__0(void* voidSelf, bool even_cycle) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vriscv_core___024root____Vthread__nba__0\n"); );
     // Body
     Vriscv_core___024root* const __restrict vlSelf VL_ATTR_UNUSED = static_cast<Vriscv_core___024root*>(voidSelf);
     Vriscv_core__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    Verilated::mtaskId(5);
+    Verilated::mtaskId(2);
     if (vlSelf->__VnbaTriggered.at(0U)) {
-        Vriscv_core___024root___nba_sequent__TOP__0(vlSelf);
+        Vriscv_core___024root___nba_sequent__TOP__1(vlSelf);
+        vlSelf->__Vm_traceActivity[1U] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
     vlSelf->__Vm_mtaskstate_7.signalUpstreamDone(even_cycle);
-    vlSelf->__Vm_mtaskstate_8.signalUpstreamDone(even_cycle);
-    vlSelf->__Vm_mtaskstate_10.signalUpstreamDone(even_cycle);
-    vlSelf->__Vm_mtaskstate_12.signalUpstreamDone(even_cycle);
+    Verilated::mtaskId(3);
+    if (vlSelf->__VnbaTriggered.at(0U)) {
+        Vriscv_core___024root___nba_sequent__TOP__2(vlSelf);
+        vlSelf->__Vm_traceActivity[2U] = 1U;
+    }
+    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
+    vlSelf->__Vm_mtaskstate_6.waitUntilUpstreamDone(even_cycle);
     Verilated::mtaskId(6);
     if (vlSelf->__VnbaTriggered.at(0U)) {
-        Vriscv_core___024root___nba_sequent__TOP__1(vlSelf);
+        Vriscv_core___024root___nba_sequent__TOP__5(vlSelf);
+        vlSelf->__Vm_traceActivity[3U] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
-    vlSelf->__Vm_mtaskstate_13.signalUpstreamDone(even_cycle);
+    vlSelf->__Vm_mtaskstate_8.signalUpstreamDone(even_cycle);
+    vlSelf->__Vm_mtaskstate_10.signalUpstreamDone(even_cycle);
+    Verilated::mtaskId(12);
+    if (vlSelf->__VnbaTriggered.at(0U)) {
+        Vriscv_core___024root___nba_sequent__TOP__11(vlSelf);
+        vlSelf->__Vm_traceActivity[7U] = 1U;
+    }
+    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
     Verilated::mtaskId(9);
     if (vlSelf->__VnbaTriggered.at(0U)) {
-        Vriscv_core___024root___nba_sequent__TOP__4(vlSelf);
+        Vriscv_core___024root___nba_sequent__TOP__8(vlSelf);
+        vlSelf->__Vm_traceActivity[6U] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
-    vlSelf->__Vm_mtaskstate_13.signalUpstreamDone(even_cycle);
+    vlSelf->__Vm_mtaskstate_11.waitUntilUpstreamDone(even_cycle);
     Verilated::mtaskId(11);
     if (vlSelf->__VnbaTriggered.at(0U)) {
-        Vriscv_core___024root___nba_sequent__TOP__6(vlSelf);
-    }
-    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
-    vlSelf->__Vm_mtaskstate_13.signalUpstreamDone(even_cycle);
-    Verilated::mtaskId(4);
-    if (vlSelf->__VnbaTriggered.at(0U)) {
         Vriscv_core___024root___nba_sequent__TOP__10(vlSelf);
-        Vriscv_core___024root___nba_sequent__TOP__11(vlSelf);
-    }
-    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
-    vlSelf->__Vm_mtaskstate_14.signalUpstreamDone(even_cycle);
-    vlSelf->__Vm_mtaskstate_15.waitUntilUpstreamDone(even_cycle);
-    Verilated::mtaskId(15);
-    if (vlSelf->__VnbaTriggered.at(0U)) {
-        Vriscv_core___024root___nba_sequent__TOP__13(vlSelf);
-        vlSelf->__Vm_traceActivity[4U] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
     vlSelf->__Vm_mtaskstate_final__nba.signalUpstreamDone(even_cycle);
 }
 
-void Vriscv_core___024root___nba_sequent__TOP__2(Vriscv_core___024root* vlSelf);
+void Vriscv_core___024root___nba_sequent__TOP__4(Vriscv_core___024root* vlSelf);
 void Vriscv_core___024root___nba_sequent__TOP__3(Vriscv_core___024root* vlSelf);
-void Vriscv_core___024root___nba_sequent__TOP__5(Vriscv_core___024root* vlSelf);
+void Vriscv_core___024root___nba_sequent__TOP__6(Vriscv_core___024root* vlSelf);
 void Vriscv_core___024root___nba_sequent__TOP__7(Vriscv_core___024root* vlSelf);
-void Vriscv_core___024root___nba_sequent__TOP__8(Vriscv_core___024root* vlSelf);
-void Vriscv_core___024root___nba_sequent__TOP__12(Vriscv_core___024root* vlSelf);
+void Vriscv_core___024root___nba_sequent__TOP__9(Vriscv_core___024root* vlSelf);
 
 void Vriscv_core___024root____Vthread__nba__1(void* voidSelf, bool even_cycle) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vriscv_core___024root____Vthread__nba__1\n"); );
     // Body
     Vriscv_core___024root* const __restrict vlSelf VL_ATTR_UNUSED = static_cast<Vriscv_core___024root*>(voidSelf);
     Vriscv_core__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    Verilated::mtaskId(5);
+    if (vlSelf->__VnbaTriggered.at(0U)) {
+        Vriscv_core___024root___nba_sequent__TOP__4(vlSelf);
+    }
+    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
+    vlSelf->__Vm_mtaskstate_6.signalUpstreamDone(even_cycle);
+    Verilated::mtaskId(4);
+    if (vlSelf->__VnbaTriggered.at(0U)) {
+        Vriscv_core___024root___nba_sequent__TOP__3(vlSelf);
+    }
+    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
+    vlSelf->__Vm_mtaskstate_6.signalUpstreamDone(even_cycle);
     vlSelf->__Vm_mtaskstate_7.waitUntilUpstreamDone(even_cycle);
     Verilated::mtaskId(7);
     if (vlSelf->__VnbaTriggered.at(0U)) {
-        Vriscv_core___024root___nba_sequent__TOP__2(vlSelf);
+        Vriscv_core___024root___nba_sequent__TOP__6(vlSelf);
+        vlSelf->__Vm_traceActivity[4U] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
+    vlSelf->__Vm_mtaskstate_11.signalUpstreamDone(even_cycle);
     vlSelf->__Vm_mtaskstate_8.waitUntilUpstreamDone(even_cycle);
     Verilated::mtaskId(8);
     if (vlSelf->__VnbaTriggered.at(0U)) {
-        Vriscv_core___024root___nba_sequent__TOP__3(vlSelf);
+        Vriscv_core___024root___nba_sequent__TOP__7(vlSelf);
+        vlSelf->__Vm_traceActivity[5U] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
     vlSelf->__Vm_mtaskstate_10.waitUntilUpstreamDone(even_cycle);
     Verilated::mtaskId(10);
     if (vlSelf->__VnbaTriggered.at(0U)) {
-        Vriscv_core___024root___nba_sequent__TOP__5(vlSelf);
-    }
-    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
-    vlSelf->__Vm_mtaskstate_12.waitUntilUpstreamDone(even_cycle);
-    Verilated::mtaskId(12);
-    if (vlSelf->__VnbaTriggered.at(0U)) {
-        Vriscv_core___024root___nba_sequent__TOP__7(vlSelf);
-    }
-    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
-    vlSelf->__Vm_mtaskstate_13.waitUntilUpstreamDone(even_cycle);
-    Verilated::mtaskId(13);
-    if (vlSelf->__VnbaTriggered.at(0U)) {
-        Vriscv_core___024root___nba_sequent__TOP__8(vlSelf);
-        vlSelf->__Vm_traceActivity[2U] = 1U;
-    }
-    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
-    vlSelf->__Vm_mtaskstate_15.signalUpstreamDone(even_cycle);
-    vlSelf->__Vm_mtaskstate_14.waitUntilUpstreamDone(even_cycle);
-    Verilated::mtaskId(14);
-    if (vlSelf->__VnbaTriggered.at(0U)) {
-        Vriscv_core___024root___nba_sequent__TOP__12(vlSelf);
-        vlSelf->__Vm_traceActivity[3U] = 1U;
+        Vriscv_core___024root___nba_sequent__TOP__9(vlSelf);
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
     vlSelf->__Vm_mtaskstate_final__nba.signalUpstreamDone(even_cycle);
