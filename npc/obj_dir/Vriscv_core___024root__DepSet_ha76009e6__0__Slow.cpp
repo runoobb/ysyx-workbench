@@ -712,7 +712,14 @@ VL_ATTR_COLD void Vriscv_core___024root___stl_sequent__TOP__0(Vriscv_core___024r
                                                                                 & vlSelf->riscv_core__DOT__inst_if_id_o))))))))))))))))))))))))))))))))))))));
     vlSelf->data_we_o = vlSelf->riscv_core__DOT__mem_wr_ex_mem_o;
     vlSelf->data_addr_o = vlSelf->riscv_core__DOT__alu_p_val_ex_mem_o;
+    vlSelf->riscv_core__DOT__u0_ifu__DOT__pc_icache_handshake 
+        = vlSelf->riscv_core__DOT__u0_ifu__DOT__pc_icache_valid;
+    vlSelf->riscv_core__DOT__u0_lsu__DOT__downstream_handshake 
+        = vlSelf->riscv_core__DOT__valid_lsu_regfile_w;
     vlSelf->data_o = vlSelf->riscv_core__DOT__rs2_val_ex_mem_o;
+    vlSelf->riscv_core__DOT____Vcellinp__u0_riscv_regfile__rd_we_i 
+        = ((IData)(vlSelf->riscv_core__DOT__reg_wr_mem_wb_o) 
+           & (IData)(vlSelf->riscv_core__DOT__valid_lsu_regfile_w));
     vlSelf->inst_addr_o = vlSelf->riscv_core__DOT__u0_ifu__DOT__pc_w;
     vlSelf->riscv_core__DOT__branch_taken = ((0U != (IData)(vlSelf->riscv_core__DOT__branch_op_ex_mem_o)) 
                                              & ((1U 
@@ -744,6 +751,9 @@ VL_ATTR_COLD void Vriscv_core___024root___stl_sequent__TOP__0(Vriscv_core___024r
                                                              >> 0x14U)))) 
                                                      & (0U 
                                                         != (IData)(vlSelf->riscv_core__DOT__rd_idx_id_ex_o))));
+    vlSelf->riscv_core__DOT__ready_exu_idu_w = (((IData)(vlSelf->riscv_core__DOT__u0_ifu__DOT__pc_icache_valid) 
+                                                 & (IData)(vlSelf->riscv_core__DOT__valid_lsu_regfile_w)) 
+                                                & (IData)(vlSelf->riscv_core__DOT__valid_exu_lsu_w));
     vlSelf->riscv_core__DOT__rd_val = ((IData)(vlSelf->riscv_core__DOT__mem_to_reg_mem_wb_o)
                                         ? vlSelf->riscv_core__DOT__mem_rd_val_mem_wb_o
                                         : vlSelf->riscv_core__DOT__alu_p_val_mem_wb_o);
@@ -852,6 +862,12 @@ VL_ATTR_COLD void Vriscv_core___024root___stl_sequent__TOP__0(Vriscv_core___024r
     vlSelf->riscv_core__DOT____Vcellinp__u0_idu__flush 
         = ((IData)(vlSelf->riscv_core__DOT__branch_taken) 
            | (IData)(vlSelf->riscv_core__DOT__data_hazard_stall));
+    vlSelf->riscv_core__DOT__u0_ifu__DOT____Vcellinp__u0_if_id__stall 
+        = (1U & ((~ (IData)(vlSelf->riscv_core__DOT__u0_ifu__DOT__pc_icache_valid)) 
+                 | (IData)(vlSelf->riscv_core__DOT__data_hazard_stall)));
+    vlSelf->riscv_core__DOT__u0_idu__DOT__downstream_handshake 
+        = ((IData)(vlSelf->riscv_core__DOT__ready_exu_idu_w) 
+           & (IData)(vlSelf->riscv_core__DOT__valid_idu_exu_w));
     vlSelf->riscv_core__DOT__u0_forward__DOT__forwarda_C1 
         = ((IData)(vlSelf->riscv_core__DOT__u0_forward__DOT____VdfgTmp_h4508ef60__0) 
            & ((IData)(vlSelf->riscv_core__DOT__rd_idx_ex_mem_o) 
@@ -925,6 +941,9 @@ VL_ATTR_COLD void Vriscv_core___024root___stl_sequent__TOP__0(Vriscv_core___024r
         [1U];
     vlSelf->riscv_core__DOT__w_regs[0U] = vlSelf->riscv_core__DOT____Vcellout__u0_riscv_regfile__regfile_o
         [0U];
+    vlSelf->riscv_core__DOT__u0_ifu__DOT__ifu_icache_ready 
+        = ((IData)(vlSelf->riscv_core__DOT__u0_idu__DOT__downstream_handshake) 
+           & (IData)(vlSelf->riscv_core__DOT__valid_ifu_idu_w));
     vlSelf->riscv_core__DOT____VdfgTmp_h49a7b528__0 
         = ((IData)(vlSelf->riscv_core__DOT__u0_forward__DOT__forwarda_C1)
             ? 2U : (((IData)(vlSelf->riscv_core__DOT__u0_forward__DOT____VdfgTmp_h10cb935f__0) 
@@ -1149,8 +1168,6 @@ VL_ATTR_COLD void Vriscv_core___024root___eval_stl(Vriscv_core___024root* vlSelf
     // Body
     if (vlSelf->__VstlTriggered.at(0U)) {
         Vriscv_core___024root___stl_sequent__TOP__0(vlSelf);
-        vlSelf->__Vm_traceActivity[7U] = 1U;
-        vlSelf->__Vm_traceActivity[6U] = 1U;
         vlSelf->__Vm_traceActivity[5U] = 1U;
         vlSelf->__Vm_traceActivity[4U] = 1U;
         vlSelf->__Vm_traceActivity[3U] = 1U;
@@ -1244,20 +1261,31 @@ VL_ATTR_COLD void Vriscv_core___024root___ctor_var_reset(Vriscv_core___024root* 
     vlSelf->riscv_core__DOT__alu_p_val_mem_wb_o = VL_RAND_RESET_I(32);
     vlSelf->riscv_core__DOT__mem_rd_val_mem_wb_o = VL_RAND_RESET_I(32);
     vlSelf->riscv_core__DOT__rd_idx_mem_wb_o = VL_RAND_RESET_I(5);
+    vlSelf->riscv_core__DOT__valid_ifu_idu_w = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__ready_exu_idu_w = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__valid_idu_exu_w = VL_RAND_RESET_I(1);
     vlSelf->riscv_core__DOT____Vcellinp__u0_idu__flush = VL_RAND_RESET_I(1);
     vlSelf->riscv_core__DOT__rs1_val_alu_i = VL_RAND_RESET_I(32);
     vlSelf->riscv_core__DOT__rs2_val_alu_i = VL_RAND_RESET_I(32);
     vlSelf->riscv_core__DOT__alu_a_val_ex_mem_i = VL_RAND_RESET_I(32);
     vlSelf->riscv_core__DOT__alu_b_val_ex_mem_i = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__valid_exu_lsu_w = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__valid_lsu_regfile_w = VL_RAND_RESET_I(1);
     for (int __Vi0 = 0; __Vi0 < 32; ++__Vi0) {
         vlSelf->riscv_core__DOT__w_regs[__Vi0] = VL_RAND_RESET_I(32);
     }
     for (int __Vi0 = 0; __Vi0 < 32; ++__Vi0) {
         vlSelf->riscv_core__DOT____Vcellout__u0_riscv_regfile__regfile_o[__Vi0] = VL_RAND_RESET_I(32);
     }
+    vlSelf->riscv_core__DOT____Vcellinp__u0_riscv_regfile__rd_we_i = VL_RAND_RESET_I(1);
     vlSelf->riscv_core__DOT____VdfgTmp_h49a7b528__0 = 0;
     vlSelf->riscv_core__DOT____VdfgTmp_hb43efe8a__0 = 0;
     vlSelf->riscv_core__DOT__u0_ifu__DOT__pc_w = VL_RAND_RESET_I(32);
+    vlSelf->riscv_core__DOT__u0_ifu__DOT__pc_icache_handshake = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__u0_ifu__DOT__pc_icache_valid = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__u0_ifu__DOT__ifu_icache_ready = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__u0_ifu__DOT____Vcellinp__u0_if_id__stall = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__u0_idu__DOT__downstream_handshake = VL_RAND_RESET_I(1);
     vlSelf->riscv_core__DOT__u0_idu__DOT__extop_w = VL_RAND_RESET_I(3);
     vlSelf->riscv_core__DOT__u0_idu__DOT__regwr_w = VL_RAND_RESET_I(1);
     vlSelf->riscv_core__DOT__u0_idu__DOT__branchop_w = VL_RAND_RESET_I(3);
@@ -1267,7 +1295,6 @@ VL_ATTR_COLD void Vriscv_core___024root___ctor_var_reset(Vriscv_core___024root* 
     vlSelf->riscv_core__DOT__u0_idu__DOT__alua_src_w = VL_RAND_RESET_I(1);
     vlSelf->riscv_core__DOT__u0_idu__DOT__alub_src_w = VL_RAND_RESET_I(2);
     vlSelf->riscv_core__DOT__u0_idu__DOT__aluctr_w = VL_RAND_RESET_I(4);
-    vlSelf->riscv_core__DOT__u0_idu__DOT__u0_id_ex__DOT__stall = VL_RAND_RESET_I(1);
     vlSelf->riscv_core__DOT__u0_exu__DOT__alu_p_w = VL_RAND_RESET_I(32);
     vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_sl = VL_RAND_RESET_I(32);
     vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__result_sr = VL_RAND_RESET_I(32);
@@ -1283,8 +1310,7 @@ VL_ATTR_COLD void Vriscv_core___024root___ctor_var_reset(Vriscv_core___024root* 
     vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_left_2_r = VL_RAND_RESET_I(32);
     vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_left_4_r = VL_RAND_RESET_I(32);
     vlSelf->riscv_core__DOT__u0_exu__DOT__u0_alu__DOT__shift_left_8_r = VL_RAND_RESET_I(32);
-    vlSelf->riscv_core__DOT__u0_lsu__DOT__stall = VL_RAND_RESET_I(1);
-    vlSelf->riscv_core__DOT__u0_lsu__DOT__flush = VL_RAND_RESET_I(1);
+    vlSelf->riscv_core__DOT__u0_lsu__DOT__downstream_handshake = VL_RAND_RESET_I(1);
     for (int __Vi0 = 0; __Vi0 < 32; ++__Vi0) {
         vlSelf->riscv_core__DOT__u0_riscv_regfile__DOT__regfile[__Vi0] = VL_RAND_RESET_I(32);
     }
@@ -1294,7 +1320,6 @@ VL_ATTR_COLD void Vriscv_core___024root___ctor_var_reset(Vriscv_core___024root* 
     vlSelf->riscv_core__DOT__u0_forward__DOT____VdfgTmp_h10cb935f__0 = 0;
     vlSelf->__Vdly__riscv_core__DOT__inst_if_id_o = VL_RAND_RESET_I(32);
     vlSelf->__Vdly__riscv_core__DOT__pc_if_id_o = VL_RAND_RESET_I(32);
-    vlSelf->__Vdly__riscv_core__DOT__alu_ctr_id_ex_o = VL_RAND_RESET_I(4);
     vlSelf->__Vdly__riscv_core__DOT__mem_op_id_ex_o = VL_RAND_RESET_I(3);
     vlSelf->__Vdly__riscv_core__DOT__mem_wr_id_ex_o = VL_RAND_RESET_I(1);
     vlSelf->__Vdly__riscv_core__DOT__mem_to_reg_id_ex_o = VL_RAND_RESET_I(1);
@@ -1303,8 +1328,7 @@ VL_ATTR_COLD void Vriscv_core___024root___ctor_var_reset(Vriscv_core___024root* 
     vlSelf->__Vdly__riscv_core__DOT__rd_idx_id_ex_o = VL_RAND_RESET_I(5);
     vlSelf->__Vdly__riscv_core__DOT__pc_id_ex_o = VL_RAND_RESET_I(32);
     vlSelf->__Vdly__riscv_core__DOT__imm_id_ex_o = VL_RAND_RESET_I(32);
-    vlSelf->__Vdly__riscv_core__DOT__reg_wr_mem_wb_o = VL_RAND_RESET_I(1);
-    vlSelf->__Vdly__riscv_core__DOT__rd_idx_mem_wb_o = VL_RAND_RESET_I(5);
+    vlSelf->__Vdly__riscv_core__DOT__valid_exu_lsu_w = VL_RAND_RESET_I(1);
     vlSelf->__Vdlyvset__riscv_core__DOT__u0_riscv_regfile__DOT__regfile__v0 = 0;
     vlSelf->__Vdlyvset__riscv_core__DOT__u0_riscv_regfile__DOT__regfile__v1 = 0;
     vlSelf->__Vdlyvset__riscv_core__DOT__u0_riscv_regfile__DOT__regfile__v2 = 0;
@@ -1402,7 +1426,7 @@ VL_ATTR_COLD void Vriscv_core___024root___ctor_var_reset(Vriscv_core___024root* 
     vlSelf->__Vdlyvset__riscv_core__DOT__u0_riscv_regfile__DOT__regfile__v63 = 0;
     vlSelf->__Vtrigrprev__TOP__clk = VL_RAND_RESET_I(1);
     vlSelf->__Vtrigrprev__TOP__rst = VL_RAND_RESET_I(1);
-    for (int __Vi0 = 0; __Vi0 < 8; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 6; ++__Vi0) {
         vlSelf->__Vm_traceActivity[__Vi0] = 0;
     }
 }

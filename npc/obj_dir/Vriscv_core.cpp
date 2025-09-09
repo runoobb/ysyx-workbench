@@ -13,11 +13,11 @@ Vriscv_core::Vriscv_core(VerilatedContext* _vcontextp__, const char* _vcname__)
     : VerilatedModel{*_vcontextp__}
     , vlSymsp{new Vriscv_core__Syms(contextp(), _vcname__, this)}
     , inst_i{vlSymsp->TOP.inst_i}
+    , data_i{vlSymsp->TOP.data_i}
+    , inst_addr_o{vlSymsp->TOP.inst_addr_o}
     , data_we_o{vlSymsp->TOP.data_we_o}
     , data_addr_o{vlSymsp->TOP.data_addr_o}
     , data_o{vlSymsp->TOP.data_o}
-    , data_i{vlSymsp->TOP.data_i}
-    , inst_addr_o{vlSymsp->TOP.inst_addr_o}
     , rst{vlSymsp->TOP.rst}
     , clk{vlSymsp->TOP.clk}
     , inst_ce_o{vlSymsp->TOP.inst_ce_o}
