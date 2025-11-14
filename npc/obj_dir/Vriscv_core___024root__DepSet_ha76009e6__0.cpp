@@ -50,7 +50,7 @@ VL_INLINE_OPT void Vriscv_core___024root___nba_sequent__TOP__1(Vriscv_core___024
         vlSelf->riscv_core__DOT__alu_p_val_mem_wb_o = 0U;
         vlSelf->riscv_core__DOT__alu_bsrc_id_ex_o = 0U;
         vlSelf->__Vdly__riscv_core__DOT__pc_id_ex_o = 0U;
-        vlSelf->__Vdly__riscv_core__DOT__valid_exu_lsu_w = 0U;
+        vlSelf->__Vdly__riscv_core__DOT__valid_exu_lsu_w = 1U;
         vlSelf->__Vdly__riscv_core__DOT__imm_id_ex_o = 0U;
         vlSelf->riscv_core__DOT__rs1_val_ex_mem_o = 0U;
         vlSelf->riscv_core__DOT__rs1_idx_id_ex_o = 0U;
@@ -1435,9 +1435,9 @@ VL_INLINE_OPT void Vriscv_core___024root___nba_sequent__TOP__7(Vriscv_core___024
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vriscv_core___024root___nba_sequent__TOP__7\n"); );
     // Body
     if (vlSelf->rst) {
-        vlSelf->riscv_core__DOT__valid_lsu_regfile_w = 0U;
-        vlSelf->riscv_core__DOT__valid_idu_exu_w = 0U;
-        vlSelf->riscv_core__DOT__valid_ifu_idu_w = 0U;
+        vlSelf->riscv_core__DOT__valid_lsu_regfile_w = 1U;
+        vlSelf->riscv_core__DOT__valid_idu_exu_w = 1U;
+        vlSelf->riscv_core__DOT__valid_ifu_idu_w = 1U;
         vlSelf->riscv_core__DOT__u0_ifu__DOT__pc_icache_valid = 1U;
     } else {
         if (vlSelf->riscv_core__DOT__u0_lsu__DOT__downstream_handshake) {
