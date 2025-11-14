@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../ysyx_riscv64_ref"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"type_traits": "cpp",
+			"condition_variable": "cpp"
+		}
+	}
+}
